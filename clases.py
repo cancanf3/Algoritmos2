@@ -2,7 +2,7 @@ from random import *
 
 
 ## VEHICULO ##
-class vehiculo(object):
+class Vehiculo(object):
 
 	longitud= 0		 
 	placa= "" 
@@ -24,7 +24,7 @@ class vehiculo(object):
 
 
 ## TUBO ## 	
-class tubo(object):
+class Tubo(object):
 	capacidad = 0
 	ocupacion = 0
 	etiqueta = 0
@@ -100,21 +100,21 @@ class tubo(object):
 ##  ESTACIONAMIENTO  ##
 class Estacionamiento(object):
 
-	etiqueta=0
-	ct=[]
-	ticket_tubo=0
-	ticket_vehiculo=0
-	tamanyo_estacionamiento=0
+	etiqueta = 0
+	ct = []
+	ticket_tubo = 0
+	ticket_vehiculo = 0
+	tamanyo_estacionamiento = 0
 
 
 	def __init__(self,e):
-		self.etiqueta=e
+		self.etiqueta = e
 
 
 	def Generar(self):
 
 		 
-		nuevo_tubo = tubo( randint(5,25) , ticket_tubo )
+		nuevo_tubo = Tubo( randint(5,25) , ticket_tubo )
 		self.ticket_tubo = ticket_tubo+1
 		self.tamanyo_estacionamiento = tamanyo_estacionamiento+1 
 		self.ct.append(nuevo_tubo)
