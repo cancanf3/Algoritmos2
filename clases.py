@@ -4,36 +4,36 @@ from random import *
 ## VEHICULO ##
 class vehiculo(object):
 
-	longitud=0		 
-	placa="" 
-	modelo=""
-	anyo=0  
-	color=""
-	etiqueta=0
+	longitud= 0		 
+	placa= "" 
+	modelo= ""
+	anyo= 0  
+	color= ""
+	etiqueta= 0 
 
 
 	def __init__(self,l,p,m,a,c,e):
 
-		longitud=l		 
-		placa=p
-		modelo=m
-		anyo=a
-		color=c
-		etiqueta=e
+		self.longitud = l		 
+		self.placa = p
+		self.modelo = m
+		self.anyo = a
+		self.color = c
+		self.etiqueta = e
 
 
 
 ## TUBO ## 	
 class tubo(object):
-	capacidad=0
-	ocupacion=0
-	etiqueta=0
+	capacidad = 0
+	ocupacion = 0
+	etiqueta = 0
 
 	def __init__(self,c):
 
-		self.capacidad=c
-		self.ocupacion=0
-		self.pv=[];
+		self.capacidad = c
+		self.ocupacion = 0
+		self.pv = [];
 
 
 	def Cabe(self,vehiculo):
