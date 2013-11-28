@@ -12,7 +12,7 @@ class Vehiculo(object):
 	etiqueta= 0 
 
 
-	def __init__(self,l,p,m,a,c,e):
+	def __init__(self,p,l,m,a,c,e):
 
 		self.longitud = l		 
 		self.placa = p
@@ -28,12 +28,13 @@ class Tubo(object):
 	capacidad = 0
 	ocupacion = 0
 	etiqueta = 0
+	pv = []
 
-	def __init__(self,c):
+	def __init__(self,c,e):
 
 		self.capacidad = c
 		self.ocupacion = 0
-		self.pv = [];
+		self.etiqueta = e
 
 
 	def Cabe(self,vehiculo):
@@ -61,12 +62,11 @@ class Tubo(object):
 			
 		return existe
 	
-	def Estacionar(self,vehiculo,e):
+	def Estacionar(self,vehiculo):
 	
 		if self.Cabe(vehiculo):
-			self.ocupacion=ocupacion + vehiculo.longitud
+			self.ocupacion = ocupacion + vehiculo.longitud
 			self.pv.insert(0,vehiculo)
-			self.etiqueta=e
 			return "El vehiculo se ha estacionado correctamente"
 
 		else:
@@ -124,7 +124,7 @@ class Estacionamiento(object):
 
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
-			self.ct[0].Estacionar(vehiculo,ticket_vehiculo)
+			self.ct[0].Estacionar(vehiculo)
 	      	   	
 
 		else:
@@ -135,7 +135,7 @@ class Estacionamiento(object):
 
 			      if self.ct[i].ocupacion >vehiculo.longitud:
 			      		self.ct[i].Estacionar(vehiculo,ticket_vehiculo+1)
-					hay_espacio=True
+					hay_espacio = True
 			      	   	
 			      else: 
 			      		i=i+1
@@ -146,9 +146,7 @@ class Estacionamiento(object):
 
 		ticket_vehiculo = ticket_vehiculo + 1
 
-		return ticket_vehiculo
-
-
+		return ticket_vehiculo  
 
 	def Existe(self,placa,ticket,*arg):
 
