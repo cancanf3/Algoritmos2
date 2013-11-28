@@ -4,10 +4,10 @@
 class Vehiculo(object):
 	
 	def __init__(self,placa,longitud,modelo,anyo,color,etiqueta):
-		longitud = self.longitud
-		placa = self.placa
-		modelo = self.modelo
-		anyo = self.anyo
-		color = self.color
-		etiqueta = self.etiqueta
+		self.longitud = longitud
+		self.placa = placa
+		self.modelo = modelo
+		self.anyo = anyo
+		self.color = color
+		self.etiqueta = etiqueta
 
