@@ -49,18 +49,18 @@ class Estacionamiento(object):
 
 	def Existe(self,placa,ticket,*arg):
 
-		i=0
+		i = 0
 		existe=False
 		while  i < self.tamanyo_estacionamiento and not(existe):
-		     j=0
+		     j = 0
 		     while j < len(self.ct[i].pv) and not(existe):
 
-		     		if (self.ct[i].pv[j].existe("placa",placa)
-		     		and self.ct[i].pv[j].existe("etiqueta",ticket)):
+		     		if (self.ct[i].pv[j].Existe("placa",placa)
+		     		and self.ct[i].etiqueta == ticket:
 		     			existe=True
 		     		else:
-		     			j=j+1
-		     i=i+1
+		     			j += 1
+		     i += 1
 		
 		if len(arg)==2 and existe: 
 		 	arg[0]=i-1
@@ -72,10 +72,32 @@ class Estacionamiento(object):
 	
 	def Retirar(self,placa,ticket):
 
-		i=0
 		j=0
-		if self.Existe(placa,ticket,i,j):
-			return "falta implementar"
+		
+		if self.Existe(placa,ticket):
+			for i in range(0,len(self.ct)):
+					tubo_explota = False
+					while not len(self.ct[i].pv) == 0 
+					and self.ct[i].etiqueta == tickect:
+						tubo_explota = True
+						vehiculo = self.ct[i].Retirar() 
+						if placa == vehiculo.placa and j == 0:
+							tubo = self.ct[i].pv
+							return "El vehiculo se ha retirado correctamente"
+							break
+						else:
+							if placa == vehiculo.placa:
+								return "El vehiculo se ha retirado correctamente"
+							else:
+								tubo = Tubo(self.ct[i].capacidad,
+											self.ct[i].etiqueta)
+								tubo.Estacionar(vehiculo)
+						j += 1
+			
+				if tubo_explota:
+					self.ct.pop(i)
+					self.ct.append(tubo)						
+					break	
 		
 		else: 
 			return "No existe un vehiculo con esos atributos"

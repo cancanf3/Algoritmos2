@@ -7,9 +7,7 @@ class Tubo(object):
 	pv = []
 
 	def __init__(self,c,e):
-
 		self.capacidad = c
-		self.ocupacion = 0
 		self.etiqueta = e
 
 
@@ -39,8 +37,8 @@ class Tubo(object):
 				break	
 		return existe
 	
-	def Estacionar(self,vehiculo):
-	
+
+	def Estacionar(self,vehiculo):	
 		if self.Cabe(vehiculo):
 			self.ocupacion += vehiculo.longitud
 			self.pv.insert(0,vehiculo)
@@ -50,22 +48,16 @@ class Tubo(object):
 			return "El tubo no tiene capacidad para estacionar este vehiculo"
 
 
-
-
-
 	def Retirar(self):
-
 		if self.ocupacion == 0:
-			return "El tubo esta vacio"
+			return None
 
 		else: 
 			self.ocupacion -= self.pv[0].longitud
-			self.pv.pop(0)
-			return "Se retiro el vehiculo correctamente"
+			return self.pv.pop(0)
 
 
 	def Cercano(self):
-
 		if self.ocupacion > 0:
 			return self.pv[0]
 
