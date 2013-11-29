@@ -55,8 +55,7 @@ class Estacionamiento(object):
 		     j = 0
 		     while j < len(self.ct[i].pv) and not(existe):
 
-		     		if (self.ct[i].pv[j].Existe("placa",placa)
-		     		and self.ct[i].etiqueta == ticket:
+		     		if self.ct[i].pv[j].Existe("placa",placa) and self.ct[i].etiqueta == ticket:
 		     			existe=True
 		     		else:
 		     			j += 1
@@ -76,23 +75,21 @@ class Estacionamiento(object):
 		
 		if self.Existe(placa,ticket):
 			for i in range(0,len(self.ct)):
-					tubo_explota = False
-					while not len(self.ct[i].pv) == 0 
-					and self.ct[i].etiqueta == tickect:
-						tubo_explota = True
-						vehiculo = self.ct[i].Retirar() 
-						if placa == vehiculo.placa and j == 0:
-							tubo = self.ct[i].pv
+				tubo_explota = False
+				while not len(self.ct[i].pv) == 0 and self.ct[i].etiqueta == tickect:
+					tubo_explota = True
+					vehiculo = self.ct[i].Retirar() 
+					if placa == vehiculo.placa and j == 0:
+						tubo = self.ct[i].pv
+						return "El vehiculo se ha retirado correctamente"
+						break
+					else:
+						if placa == vehiculo.placa:
 							return "El vehiculo se ha retirado correctamente"
-							break
 						else:
-							if placa == vehiculo.placa:
-								return "El vehiculo se ha retirado correctamente"
-							else:
-								tubo = Tubo(self.ct[i].capacidad,
-											self.ct[i].etiqueta)
-								tubo.Estacionar(vehiculo)
-						j += 1
+							tubo = Tubo(self.ct[i].capacidad, self.ct[i].etiqueta)
+							tubo.Estacionar(vehiculo)
+					j += 1
 			
 				if tubo_explota:
 					self.ct.pop(i)
