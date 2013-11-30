@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 # Modulo Estacionamiento
+from random import *
+from tubo import *
 class Estacionamiento(object):
 
 	etiqueta = 0
@@ -14,38 +16,56 @@ class Estacionamiento(object):
 
 
 	def Generar(self):	 
-		nuevo_tubo = Tubo(randint(5,25), ticket_tubo)
+		nuevo_tubo = Tubo(randint(5,25), self.ticket_tubo)
 		self.ticket_tubo += 1
 		self.tamanyo_estacionamiento += 1 
 		self.ct.append(nuevo_tubo)
 
+	def Pop(self,*arg):
+		self.ticket_tubo -= 1
+		self.tamanyo_estacionamiento -= 1
+		if len(arg) == 1:
+			self.ct.pop(arg)
+		else:
+			self.ct.pop()
+
 
 	def Estacionar(self,vehiculo):
-
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
-			self.ct[0].Estacionar(vehiculo)
-	      	   	
+			while self.ct[0].capacidad < vehiculo.longitud:
+				self.Pop(0)
+				self.Generar()
+			self.ct[0].Estacionar_tubo(vehiculo)
+			tubo_estacionar = self.ct[0].etiqueta
+
 
 		else:
 			i = 0
 			hay_espacio = False
-			while (( i < self.tamanyo_estacionamiento) 
-			and not(hay_espacio)):
+			while (( i < self.tamanyo_estacionamiento) and not(hay_espacio)):
 
-				if self.ct[i].ocupacion > vehiculo.longitud:
-					self.ct[i].Estacionar(vehiculo)
+				if (self.ct[i].capacidad - self.ct[i].ocupacion) >= vehiculo.longitud:
+					self.ct[i].Estacionar_tubo(vehiculo)
+					tubo_estacionar = self.ct[i].etiqueta
 					hay_espacio = True
+					break
 				else: 
 					i += 1
 
-				if not(hay_espacio):
+			if not(hay_espacio):
+				self.Generar()
+				while self.ct[len(self.ct) - 1].capacidad < vehiculo.longitud:
+					self.Pop()
 					self.Generar()
-					self.ct[i].Estacionar(vehiculo,self.ticket_vehiculo + 1)
+
+				self.ct[len(self.ct) - 1].Estacionar_tubo(vehiculo)
+				tubo_estacionar = self.ct[len(self.ct) - 1].etiqueta
 
 		self.ticket_vehiculo += 1
+		return tubo_estacionar 
 
-		return self.ticket_vehiculo  
+
 
 	def Existe(self,placa,ticket,*arg):
 
