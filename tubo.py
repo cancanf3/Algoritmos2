@@ -1,18 +1,19 @@
 #! /usr/bin/env python
 # Modulo de Tubo
+from vehiculo import *
 class Tubo(object):
 	capacidad = 0
 	ocupacion = 0
 	etiqueta = 0
 	pv = []
 
-	def __init__(self,c,e):
-		self.capacidad = c
+	def __init__(self,tamanyo,e):
+		self.capacidad = tamanyo
 		self.etiqueta = e
 
 
 	def Cabe(self,vehiculo):
-		if (vehiculo.longitud) <= (self.capacidad-self.ocupacion):
+		if (vehiculo.longitud) <= (self.capacidad - self.ocupacion):
 			return True
 		else:
 			return False
@@ -38,7 +39,7 @@ class Tubo(object):
 		return existe
 	
 
-	def Estacionar(self,vehiculo):	
+	def Estacionar_tubo(self,vehiculo):	
 		if self.Cabe(vehiculo):
 			self.ocupacion += vehiculo.longitud
 			self.pv.insert(0,vehiculo)
@@ -50,7 +51,7 @@ class Tubo(object):
 
 	def Retirar(self):
 		if self.ocupacion == 0:
-			return None
+			return "El tubo esta vacio"
 
 		else: 
 			self.ocupacion -= self.pv[0].longitud
