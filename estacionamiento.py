@@ -53,11 +53,6 @@ class Estacionamiento(object):
 				else: 
 					i += 1
 
-<<<<<<< HEAD
-		if not(hay_espacio):
-			self.Generar()
-			self.ct[i].Estacionar(vehiculo,self.ticket_vehiculo + 1)
-=======
 			if not(hay_espacio):
 				self.Generar()
 				while self.ct[len(self.ct) - 1].capacidad < vehiculo.longitud:
@@ -66,7 +61,6 @@ class Estacionamiento(object):
 
 				self.ct[len(self.ct) - 1].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[len(self.ct) - 1].etiqueta
->>>>>>> 83ddc64eb2b1c4906c6ae1f5e5dfcefa6e690571
 
 		self.ticket_vehiculo += 1
 		return tubo_estacionar 
