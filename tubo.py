@@ -11,6 +11,7 @@ class Tubo(object):
 		self.capacidad = tamanyo
 		self.etiqueta = e
 		self.pv = []
+		self.ocupacion = 0
 
 	def Cabe(self,vehiculo):
 		if (vehiculo.longitud) <= (self.capacidad - self.ocupacion):
