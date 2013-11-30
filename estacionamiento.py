@@ -30,7 +30,7 @@ class Estacionamiento(object):
 			self.ct.pop()
 
 
-	def Estacionar(self,vehiculo):
+	def Estacionar(self,vehiculo,*arg):
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
 			while self.ct[0].capacidad < vehiculo.longitud:
@@ -42,31 +42,33 @@ class Estacionamiento(object):
 
 		else:
 			i = 0
+			if len(arg)==1 and arg[0]==0:
+				i+=1
 			hay_espacio = False
 			while (( i < self.tamanyo_estacionamiento) and not(hay_espacio)):
 
-				if (self.ct[i].capacidad - self.ct[i].ocupacion) >= vehiculo.longitud:
+				if self.ct[i].Cabe(vehiculo):
 					self.ct[i].Estacionar_tubo(vehiculo)
 					tubo_estacionar = self.ct[i].etiqueta
 					hay_espacio = True
 					break
 				else: 
 					i += 1
+					if len(arg)==1 and arg[0]==i:
+						i+=1
+					
 
-<<<<<<< HEAD
-		if not(hay_espacio):
-			self.Generar()
-			self.ct[i].Estacionar(vehiculo,self.ticket_vehiculo + 1)
-=======
+
+
 			if not(hay_espacio):
 				self.Generar()
-				while self.ct[len(self.ct) - 1].capacidad < vehiculo.longitud:
-					self.Pop()
+				while not(self.ct[i].Cabe(vehiculo)):
 					self.Generar()
+					i+=1
 
-				self.ct[len(self.ct) - 1].Estacionar_tubo(vehiculo)
-				tubo_estacionar = self.ct[len(self.ct) - 1].etiqueta
->>>>>>> 83ddc64eb2b1c4906c6ae1f5e5dfcefa6e690571
+				self.ct[i].Estacionar_tubo(vehiculo)
+				tubo_estacionar = self.ct[i].etiqueta
+
 
 		self.ticket_vehiculo += 1
 		return tubo_estacionar 
@@ -132,6 +134,17 @@ class Estacionamiento(object):
 		self.tamanyo = self.tamanyo - 1
 		self.ct.pop(1)
 
+
+
+	def mostrar(self):
+		for i in range(len(self.ct)):
+			print("TUBO",self.ct[i].etiqueta,self.ct[i].capacidad,self.ct[i].ocupacion)
+			print("--------------------------")
+			for j in range(len(self.ct[i].pv)):
+				print(self.ct[i].pv[j].etiqueta)
+			print("\n")
+		
+
 	def Vaciar(self,etiqueta):
 		i=0
 		existe=False
@@ -143,14 +156,19 @@ class Estacionamiento(object):
 
 		if existe:
 			print(i)
-			for j in range(len(self.ct[i].pv)):
+			for j in range(len(self.ct[i].pv)-1):
 				vehiculo=self.ct[i].Cercano()
 				self.ct[i].Retirar()
 				self.Estacionar(vehiculo,i)
+
+
 			self.ct.pop(i)	
 				
 			return "Se Vacio el tubo"
 
 		else:
 			return "No existe un tubo con esta etiqueta"
+
+
+
 

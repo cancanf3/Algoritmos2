@@ -10,6 +10,7 @@ class Tubo(object):
 	def __init__(self,tamanyo,e):
 		self.capacidad = tamanyo
 		self.etiqueta = e
+		self.pv=[]
 
 
 	def Cabe(self,vehiculo):
@@ -52,7 +53,6 @@ class Tubo(object):
 	def Retirar(self):
 		if self.ocupacion == 0:
 			return "El tubo esta vacio"
-
 		else: 
 			self.ocupacion -= self.pv[0].longitud
 			return self.pv.pop(0)
