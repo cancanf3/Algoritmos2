@@ -2,38 +2,39 @@ from random import *
 
 
 ## VEHICULO ##
-class vehiculo(object):
+class Vehiculo(object):
 
-	longitud=0		 
-	placa="" 
-	modelo=""
-	anyo=0  
-	color=""
-	etiqueta=0
+	longitud= 0		 
+	placa= "" 
+	modelo= ""
+	anyo= 0  
+	color= ""
+	etiqueta= 0 
 
 
-	def __init__(self,l,p,m,a,c,e):
+	def __init__(self,p,l,m,a,c,e):
 
-		longitud=l		 
-		placa=p
-		modelo=m
-		anyo=a
-		color=c
-		etiqueta=e
+		self.longitud = l		 
+		self.placa = p
+		self.modelo = m
+		self.anyo = a
+		self.color = c
+		self.etiqueta = e
 
 
 
 ## TUBO ## 	
-class tubo(object):
-	capacidad=0
-	ocupacion=0
-	etiqueta=0
+class Tubo(object):
+	capacidad = 0
+	ocupacion = 0
+	etiqueta = 0
+	pv = []
 
-	def __init__(self,c):
+	def __init__(self,c,e):
 
-		self.capacidad=c
-		self.ocupacion=0
-		self.pv=[];
+		self.capacidad = c
+		self.ocupacion = 0
+		self.etiqueta = e
 
 
 	def Cabe(self,vehiculo):
@@ -61,12 +62,11 @@ class tubo(object):
 			
 		return existe
 	
-	def Estacionar(self,vehiculo,e):
+	def Estacionar(self,vehiculo):
 	
 		if self.Cabe(vehiculo):
-			self.ocupacion=ocupacion + vehiculo.longitud
+			self.ocupacion = ocupacion + vehiculo.longitud
 			self.pv.insert(0,vehiculo)
-			self.etiqueta=e
 			return "El vehiculo se ha estacionado correctamente"
 
 		else:
@@ -100,21 +100,21 @@ class tubo(object):
 ##  ESTACIONAMIENTO  ##
 class Estacionamiento(object):
 
-	etiqueta=0
-	ct=[]
-	ticket_tubo=0
-	ticket_vehiculo=0
-	tamanyo_estacionamiento=0
+	etiqueta = 0
+	ct = []
+	ticket_tubo = 0
+	ticket_vehiculo = 0
+	tamanyo_estacionamiento = 0
 
 
 	def __init__(self,e):
-		self.etiqueta=e
+		self.etiqueta = e
 
 
 	def Generar(self):
 
 		 
-		nuevo_tubo = tubo( randint(5,25) , ticket_tubo )
+		nuevo_tubo = Tubo( randint(5,25) , ticket_tubo )
 		self.ticket_tubo = ticket_tubo+1
 		self.tamanyo_estacionamiento = tamanyo_estacionamiento+1 
 		self.ct.append(nuevo_tubo)
@@ -124,7 +124,7 @@ class Estacionamiento(object):
 
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
-			self.ct[0].Estacionar(vehiculo,ticket_vehiculo)
+			self.ct[0].Estacionar(vehiculo)
 	      	   	
 
 		else:
@@ -135,7 +135,7 @@ class Estacionamiento(object):
 
 			      if self.ct[i].ocupacion >vehiculo.longitud:
 			      		self.ct[i].Estacionar(vehiculo,ticket_vehiculo+1)
-					hay_espacio=True
+					hay_espacio = True
 			      	   	
 			      else: 
 			      		i=i+1
@@ -146,9 +146,7 @@ class Estacionamiento(object):
 
 		ticket_vehiculo = ticket_vehiculo + 1
 
-		return ticket_vehiculo
-
-
+		return ticket_vehiculo  
 
 	def Existe(self,placa,ticket,*arg):
 
