@@ -4,16 +4,14 @@ from random import *
 from tubo import *
 class Estacionamiento(object):
 
-	etiqueta = 0
-	ct = []
 	ticket_tubo = 0
 	ticket_vehiculo = 0
-	tamanyo_estacionamiento = 0
 
 
 	def __init__(self,e):
 		self.etiqueta = e
-
+		self.ct = []
+		tamanyo_estacionamiento = 0
 
 	def Generar(self):	 
 		nuevo_tubo = Tubo(randint(5,25), self.ticket_tubo)
@@ -69,6 +67,11 @@ class Estacionamiento(object):
 				self.ct[i].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[i].etiqueta
 
+<<<<<<< HEAD
+=======
+				self.ct[len(self.ct) - 1].Estacionar_tubo(vehiculo)
+				tubo_estacionar = self.ct[len(self.ct) - 1].etiqueta
+>>>>>>> e48fdd062bd529dc19f6fe5b3122baeb2bd2cac3
 
 		self.ticket_vehiculo += 1
 		return tubo_estacionar 
@@ -151,17 +154,22 @@ class Estacionamiento(object):
 		while (i < len(self.ct)) and not(existe):
 			if self.ct[i].etiqueta == etiqueta:
 				existe = True
+				break
 			else: 
-				i=i+1
+				i += 1
 
 		if existe:
 			print(i)
 			for j in range(len(self.ct[i].pv)-1):
 				vehiculo=self.ct[i].Cercano()
 				self.ct[i].Retirar()
+<<<<<<< HEAD
 				self.Estacionar(vehiculo,i)
 
 
+=======
+				self.Estacionar(vehiculo)
+>>>>>>> e48fdd062bd529dc19f6fe5b3122baeb2bd2cac3
 			self.ct.pop(i)	
 				
 			return "Se Vacio el tubo"
