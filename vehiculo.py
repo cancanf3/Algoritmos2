@@ -3,13 +3,6 @@
 
 class Vehiculo(object):
 
-	longitud= 0		 
-	placa= "" 
-	modelo= ""
-	anyo= 0  
-	color= ""
-	etiqueta= 0 
-
 
 	def __init__(self,p,l,m,a,c,e):
     
