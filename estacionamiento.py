@@ -67,11 +67,8 @@ class Estacionamiento(object):
 				self.ct[i].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[i].etiqueta
 
-<<<<<<< HEAD
-=======
 				self.ct[len(self.ct) - 1].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[len(self.ct) - 1].etiqueta
->>>>>>> e48fdd062bd529dc19f6fe5b3122baeb2bd2cac3
 
 		self.ticket_vehiculo += 1
 		return tubo_estacionar 
@@ -163,13 +160,9 @@ class Estacionamiento(object):
 			for j in range(len(self.ct[i].pv)-1):
 				vehiculo=self.ct[i].Cercano()
 				self.ct[i].Retirar()
-<<<<<<< HEAD
-				self.Estacionar(vehiculo,i)
 
 
-=======
 				self.Estacionar(vehiculo)
->>>>>>> e48fdd062bd529dc19f6fe5b3122baeb2bd2cac3
 			self.ct.pop(i)	
 				
 			return "Se Vacio el tubo"
