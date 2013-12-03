@@ -6,4 +6,5 @@ from vehiculo import *
 from estacionamiento import *
 from evento import *
 
-x = Evento 
+x = Evento()
+print(x.ProcesarLlegadas("prueba.txt"))

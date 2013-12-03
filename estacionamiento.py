@@ -10,7 +10,7 @@ class Estacionamiento(object):
 	def __init__(self,e):
 		self.etiqueta = e
 		self.ct = []
-		tamanyo_estacionamiento = 0
+		self.tamanyo_estacionamiento = 0
 
 	def Generar(self):	 
 		nuevo_tubo = Tubo(randint(5,25), self.ticket_tubo)
@@ -26,7 +26,7 @@ class Estacionamiento(object):
 				self.Generar()
 
 			i = 0
-			self.ct[self.tamanyo_estacionamiento] = self.ct[0]
+			self.ct.append(self.ct[0])
 			while i < self.tamanyo_estacionamiento:
 				self.ct[i] = self.ct[i + 1]
 				i += 1
@@ -152,27 +152,13 @@ class Estacionamiento(object):
 		else:
 			return "No existe un tubo con esta etiqueta"
 
-	def Buscar(self, atributo,valor):
+	def Buscar(self, atributo, valor):
 		x = []
-		for i in self.ct
-			x[i] = [i.etiqueta, i.Existe(atributo,valor)]
+		for i in self.ct:
+			x.append([i.etiqueta, i.Existe(atributo,valor)])
 		 
 		return x
-
-	def ProcesarLlegadas(self, nombreArchivo):
-	    
-
-		archivo = open(nombreArchivo,"r")
-
-		for i in archivo:
-			if archivo.readline() == "\n":
-				archivo.readline()
-			else:
-				x = archivo.readline()
-				x = x.split()
-				evento = Evento(x)
-				evento.Procesar(self.etiqueta)
-				
+			
 								
 			
 
