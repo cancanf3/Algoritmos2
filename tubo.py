@@ -6,9 +6,15 @@ class Tubo(object):
 	def __init__(self,tamanyo,e):
 		self.capacidad = tamanyo
 		self.etiqueta = e
+<<<<<<< HEAD
 		self.pv=[]
 		self.ocupacion = 0
 
+=======
+
+		self.pv = []
+		self.ocupacion = 0
+>>>>>>> d7e2389999584ae05a47c31bdaea024ac79201d4
 
 	def Cabe(self,vehiculo):
 		if (vehiculo.longitud) <= (self.capacidad - self.ocupacion):
@@ -34,8 +40,8 @@ class Tubo(object):
 			elif ( atributo == "etiqueta") and ( i.etiqueta == valor):
 				existe = True
 			if existe == True: 
-				carros.append(i)	
-		return carros
+				carro.append(i)	
+		return carro
 	
 
 	def Estacionar_tubo(self,vehiculo):	

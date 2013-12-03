@@ -4,6 +4,7 @@
 from tubo import *
 from vehiculo import *
 from estacionamiento import *
+<<<<<<< HEAD
 mi_carro1 = Vehiculo("carabobo4",5,"toyota",2008,"negro",1234)
 mi_carro2 = Vehiculo("caracas1",3,"toyota",2010,"blanco",8456)
 mi_carro3 = Vehiculo("valencia2",7,"ford",2012,"azul",123567)
@@ -28,3 +29,9 @@ estacionamiento1.Vaciar(0)
 estacionamiento1.mostrar()
 
 
+=======
+from evento import *
+
+x = Evento()
+print(x.ProcesarLlegadas("prueba.txt"))
+>>>>>>> d7e2389999584ae05a47c31bdaea024ac79201d4
