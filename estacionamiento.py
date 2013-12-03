@@ -5,7 +5,6 @@ from tubo import *
 class Estacionamiento(object):
 
 	ticket_tubo = 0
-	ticket_vehiculo = 0
 
 
 	def __init__(self,e):
@@ -19,59 +18,42 @@ class Estacionamiento(object):
 		self.tamanyo_estacionamiento += 1 
 		self.ct.append(nuevo_tubo)
 
-	def Pop(self,*arg):
-		self.ticket_tubo -= 1
-		self.tamanyo_estacionamiento -= 1
-		if len(arg) == 1:
-			self.ct.pop(arg)
-		else:
-			self.ct.pop()
 
-
-	def Estacionar(self,vehiculo,*arg):
+	def Estacionar(self,vehiculo):
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
 			while self.ct[0].capacidad < vehiculo.longitud:
-				self.Pop(0)
 				self.Generar()
+
+			i = 0
+			self.ct[self.tamanyo_estacionamiento] = self.ct[0]
+			while i < self.tamanyo_estacionamiento:
+				self.ct[i] = self.ct[i + 1]
+				i += 1
+
 			self.ct[0].Estacionar_tubo(vehiculo)
 			tubo_estacionar = self.ct[0].etiqueta
 
 
 		else:
-			i = 0
-			if len(arg)==1 and arg[0]==0:
-				i+=1
-			hay_espacio = False
-			while (( i < self.tamanyo_estacionamiento) and not(hay_espacio)):
-
-				if self.ct[i].Cabe(vehiculo):
-					self.ct[i].Estacionar_tubo(vehiculo)
-					tubo_estacionar = self.ct[i].etiqueta
-					hay_espacio = True
-					break
-				else: 
-					i += 1
-					if len(arg)==1 and arg[0]==i:
-						i+=1
-					
-
-
-
-			if not(hay_espacio):
-				self.Generar()
-				while not(self.ct[i].Cabe(vehiculo)):
+			if self.ct[0].ocupacion > vehiculo.longitud:
+				self.ct[0].Estacionar_tubo(vehiculo)
+				tubo_estacionar = self.ct[0].etiqueta
+			else:
+				
+				while self.ct[0].capacidad < vehiculo.longitud:
 					self.Generar()
-					i+=1
 
-				self.ct[i].Estacionar_tubo(vehiculo)
-				tubo_estacionar = self.ct[i].etiqueta
+				i = 0
+				self.ct[self.tamanyo_estacionamiento] = self.ct[0]
+				while i < self.tamanyo_estacionamiento:
+					self.ct[i] = self.ct[i + 1]
+					i += 1
 
-				self.ct[len(self.ct) - 1].Estacionar_tubo(vehiculo)
-				tubo_estacionar = self.ct[len(self.ct) - 1].etiqueta
+				self.ct[0].Estacionar_tubo(vehiculo)
+				tubo_estacionar = self.ct[0].etiqueta
 
-		self.ticket_vehiculo += 1
-		return tubo_estacionar 
+		return tubo_estacionar
 
 
 
@@ -170,6 +152,28 @@ class Estacionamiento(object):
 		else:
 			return "No existe un tubo con esta etiqueta"
 
+	def Buscar(self, atributo,valor):
+		x = []
+		for i in self.ct
+			x[i] = [i.etiqueta, i.Existe(atributo,valor)]
+		 
+		return x
 
+	def ProcesarLlegadas(self, nombreArchivo):
+	    
+
+		archivo = open(nombreArchivo,"r")
+
+		for i in archivo:
+			if archivo.readline() == "\n":
+				archivo.readline()
+			else:
+				x = archivo.readline()
+				x = x.split()
+				evento = Evento(x)
+				evento.Procesar(self.etiqueta)
+				
+								
+			
 
 
