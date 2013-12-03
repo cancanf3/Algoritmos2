@@ -27,4 +27,3 @@ estacionamiento1.Vaciar(0)
 (estacionamiento1.Estacionar(mi_carro1))
 estacionamiento1.mostrar()
 
-

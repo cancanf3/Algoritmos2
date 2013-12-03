@@ -154,6 +154,7 @@ class Estacionamiento(object):
 				i += 1
 
 		if existe:
+			print(i)
 			for j in range(len(self.ct[i].pv)-1):
 				vehiculo=self.ct[i].Cercano()
 				self.ct[i].Retirar()
