@@ -2,7 +2,7 @@
 # Modulo de Tubo
 from vehiculo import *
 class Tubo(object):
-
+	pv = []
 	def __init__(self,tamanyo,e):
 		self.capacidad = tamanyo
 		self.etiqueta = e

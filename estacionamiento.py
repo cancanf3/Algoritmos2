@@ -6,7 +6,6 @@ class Estacionamiento(object):
 
 	ticket_tubo = 0
 
-
 	def __init__(self,e):
 		self.etiqueta = e
 		self.ct = []
@@ -19,37 +18,39 @@ class Estacionamiento(object):
 		self.ct.append(nuevo_tubo)
 
 
-	def Estacionar(self,vehiculo):
+	def Estacionar(self, vehiculo, *arg):
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
 			while self.ct[0].capacidad < vehiculo.longitud:
 				self.Generar()
 
-			i = 0
-			self.ct.append(self.ct[0])
-			while i < self.tamanyo_estacionamiento:
-				self.ct[i] = self.ct[i + 1]
-				i += 1
+				i = len(self.ct) - 1
+				aux = self.ct[i] 
+				while i != 0:
+					self.ct[i] = self.ct[i - 1]
+					i -= 1
 
+				self.ct[0] = aux
 			self.ct[0].Estacionar_tubo(vehiculo)
 			tubo_estacionar = self.ct[0].etiqueta
 
 
 		else:
-			if self.ct[0].ocupacion > vehiculo.longitud:
+			if (self.ct[0].capacidad - self.ct[0].ocupacion) >= vehiculo.longitud:
 				self.ct[0].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[0].etiqueta
 			else:
 				
-				while self.ct[0].capacidad < vehiculo.longitud:
+				while (self.ct[0].capacidad - self.ct[0].ocupacion) < vehiculo.longitud:
 					self.Generar()
 
-				i = 0
-				self.ct[self.tamanyo_estacionamiento] = self.ct[0]
-				while i < self.tamanyo_estacionamiento:
-					self.ct[i] = self.ct[i + 1]
-					i += 1
+					i = len(self.ct) - 1
+					aux = self.ct[i] 
+					while i != 0:
+						self.ct[i] = self.ct[i - 1]
+						i -= 1
 
+					self.ct[0] = aux
 				self.ct[0].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[0].etiqueta
 
