@@ -2,6 +2,8 @@
 # Modulo Estacionamiento
 from random import *
 from tubo import *
+from vehiculo import *
+seed(0.101101)
 class Estacionamiento(object):
 
 	ticket_tubo = 0
@@ -66,7 +68,7 @@ class Estacionamiento(object):
 		     j = 0
 		     while j < len(self.ct[i].pv) and not(existe):
 
-		     		if self.ct[i].pv[j].Existe("placa",placa) and self.ct[i].etiqueta == ticket:
+		     		if self.ct[i].Existe("placa",placa) and self.ct[i].etiqueta == ticket:
 		     			existe=True
 		     		else:
 		     			j += 1
@@ -162,5 +164,75 @@ class Estacionamiento(object):
 			
 								
 			
+ 
+	def ProcesarLlegadas(self, nombreArchivo):
+	    
 
+		archivo = open(nombreArchivo,"r")
+		for i in archivo:
+			linea = i.split()
+			if len(linea) == 0:
+			    pass
+			else:
+				self.Procesar(linea)
 
+#<<<<======================================================================>>>#
+    
+class Evento(Estacionamiento):
+	ticket_estacionamiento = 0
+	ticket_vehiculo = 0
+	le = []	
+	traza = " "
+
+	def __init__(self):
+		self.mensaje = " " 
+		self.encabezado = " "
+		
+	def Procesar(self, linea):
+		if linea[0] == "C":
+			self.encabezado = ' '.join(linea) 
+			estacionamiento = \
+			Estacionamiento(self.ticket_estacionamiento)
+			self.le.append(estacionamiento)
+			self.ticket_estacionamiento += 1
+			self.mensaje = "Se ha creado el Estacionamiento"
+			self.traza = linea[1]	
+			print(len(self.le))
+
+		elif linea[0] == "P":
+			self.encabezado = ' '.join(linea) 
+			x = Vehiculo(linea[1], float(linea[2]), linea[3], \
+				int(linea[4]), linea[5], self.ticket_vehiculo)
+			self.ticket_vehiculo += 1
+			pseudo_mensaje = self.le[len(self.le) - 1].Estacionar(x)
+			self.mensaje = "Se ha Estacionado el Vehiculo, \
+					su ticket: " + str(pseudo_mensaje)
+		elif linea[0] == "R":
+			self.encabezado = ' '.join(linea) 
+			x = self.le[len(self.le) - 1].Retirar(linea[1], linea[2])  
+			self.mensaje = x 
+
+		elif linea[0] == "E":
+			self.encabezado = ' '.join(linea) 
+			x = self.le[len(self.le) - 1].Existe(linea[1], linea[2])
+			self.mensaje = str(x)
+		elif linea[0] == "K":
+			self.encabezado = ' '.join(linea) 
+			self.mensaje = " Fin \n"
+
+		elif linea[0] == "B":
+			self.encabezado = ' '.join(linea)
+			self.mensaje = ("Vehiculos de " + str(linea[1]) + " " \
+					+ str(linea[2]) + "\n")
+			x = self.le[len(self.le) - 1].Buscar(linea[1], linea[2])
+			for i in x:
+				for j in i[1]:
+					print(j)
+					self.mensaje += str(i[0]) + ": "+ j + \
+							"\n"
+
+		archivo = open(self.traza, "a")
+		archivo.write(self.encabezado + "\n")
+		archivo.write("--> " + self.mensaje + "\n")
+		archivo.close()
+    
