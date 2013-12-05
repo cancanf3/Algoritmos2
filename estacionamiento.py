@@ -104,7 +104,7 @@ class Estacionamiento(object):
 			print("\n")
 		
 
-	def Vaciar(self,etiqueta):
+	def Vaciar(self,etiqueta): #El profesor Victor Theoktisto comento que este procedimiento no es necesario
 		i=0
 		existe=False
 		while (i < len(self.ct)) and not(existe):
@@ -193,6 +193,7 @@ class Evento(Estacionamiento):
 			x = self.le[len(self.le) - 1].Existe(linea[1], int(linea[2]))
 			self.mensaje = str(x)
 		elif linea[0] == "K":
+			self.le.pop()
 			self.encabezado = ' '.join(linea) 
 			self.mensaje = " Fin \n"
 
