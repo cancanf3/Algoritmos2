@@ -17,10 +17,30 @@ class Tubo(object):
 			return False
 
 
-	def Existe(self,atributo,valor):
-		existe = False
+	def Busqueda(self,atributo,valor):
 		carro = []
 		for i in self.pv:
+			existe = False
+			if ( atributo == "Longitud") and ( i.longitud == valor):
+				existe = True
+			elif ( atributo == "Placa") and ( i.placa == valor):
+				existe = True
+			elif ( atributo == "Modelo") and ( i.modelo == valor):
+				existe = True
+			elif ( atributo == "Anyo") and ( i.anyo == valor):
+				existe = True					
+			elif ( atributo == "Color") and ( i.color == valor):
+				existe = True
+			elif ( atributo == "Etiqueta") and ( i.etiqueta == valor):
+				existe = True
+			if existe == True:
+				carro.append(i)
+		return carro
+
+	def Existe(self,atributo,valor):
+		carro = []
+		for i in self.pv:
+			existe = False
 			if ( atributo == "longitud") and ( i.longitud == valor):
 				existe = True
 			elif ( atributo == "placa") and ( i.placa == valor):
@@ -33,9 +53,9 @@ class Tubo(object):
 				existe = True
 			elif ( atributo == "etiqueta") and ( i.etiqueta == valor):
 				existe = True
-			if existe == True: 
-				carro.append(i)	
-		return carro
+			if existe:
+				break
+		return existe
 	
 
 	def Estacionar_tubo(self,vehiculo):	

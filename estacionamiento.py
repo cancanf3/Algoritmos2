@@ -6,13 +6,12 @@ from vehiculo import *
 seed(0.101101)
 class Estacionamiento(object):
 
-	ticket_tubo = 0
 
 	def __init__(self,e):
 		self.etiqueta = e
 		self.ct = []
 		self.tamanyo_estacionamiento = 0
-
+		self.ticket_tubo = 0
 	def Generar(self):	 
 		nuevo_tubo = Tubo(randint(5,25), self.ticket_tubo)
 		self.ticket_tubo += 1
@@ -59,59 +58,34 @@ class Estacionamiento(object):
 		return tubo_estacionar
 
 
+	def Existe(self,placa,ticket):
+		existe = False
+		for i in self.ct:
+			if ticket == i.etiqueta:
+				existe = i.Existe("placa",placa)
 
-	def Existe(self,placa,ticket,*arg):
-
-		i = 0
-		existe=False
-		while  i < self.tamanyo_estacionamiento and not(existe):
-		     j = 0
-		     while j < len(self.ct[i].pv) and not(existe):
-
-		     		if self.ct[i].Existe("placa",placa) and self.ct[i].etiqueta == ticket:
-		     			existe=True
-		     		else:
-		     			j += 1
-		     i += 1
-		
-		if len(arg)==2 and existe: 
-		 	arg[0]=i-1
-		 	arg[1]=j
-		 
-		 
 		return existe
 
-	
-	def Retirar(self,placa,ticket):
 
-		j=0
-		
-		if self.Existe(placa,ticket):
-			for i in range(0,len(self.ct)):
-				tubo_explota = False
-				while not len(self.ct[i].pv) == 0 and self.ct[i].etiqueta == tickect:
-					tubo_explota = True
-					vehiculo = self.ct[i].Retirar() 
-					if placa == vehiculo.placa and j == 0:
-						tubo = self.ct[i].pv
-						return "El vehiculo se ha retirado correctamente"
-						break
-					else:
-						if placa == vehiculo.placa:
-							return "El vehiculo se ha retirado correctamente"
-						else:
-							tubo = Tubo(self.ct[i].capacidad, self.ct[i].etiqueta)
-							tubo.Estacionar(vehiculo)
-					j += 1
-			
-				if tubo_explota:
-					self.ct.pop(i)
-					self.ct.append(tubo)						
-					break	
-		
-		else: 
-			return "No existe un vehiculo con esos atributos"
-			
+	def Retirar(self,placa,ticket):
+		if True == self.Existe(placa,ticket):
+			while self.ct[0].etiqueta != ticket:
+				self.ct.append(self.ct[0])
+				self.ct.pop(0)
+
+			aux = Tubo(self.ct[0].capacidad,self.ct[0].etiqueta)
+			for i in range(len(self.ct[0].pv)):
+				if placa == self.ct[0].pv[0].placa:
+					x = self.ct[0].Retirar()
+				else:
+					aux.Estacionar_tubo(self.ct[0].Retirar())
+					
+			self.ct.pop(0)
+			self.ct.append(aux)
+		else:
+			x = "El vehiculo no existe"
+
+		return x
 
 
 	def Destruir(self):
@@ -126,7 +100,7 @@ class Estacionamiento(object):
 			print("TUBO",self.ct[i].etiqueta,self.ct[i].capacidad,self.ct[i].ocupacion)
 			print("--------------------------")
 			for j in range(len(self.ct[i].pv)):
-				print(self.ct[i].pv[j].etiqueta)
+				print(self.ct[i].pv[j].placa)
 			print("\n")
 		
 
@@ -157,9 +131,12 @@ class Estacionamiento(object):
 
 	def Buscar(self, atributo, valor):
 		x = []
+		if (atributo == ( "Anyo" or "Longitud" or "Etiqueta" or "anyo" \
+			or "longitud" or "etiqueta")):
+			valor = int(valor)
+
 		for i in self.ct:
-			x.append([i.etiqueta, i.Existe(atributo,valor)])
-		 
+			x.append([i.etiqueta, i.Busqueda(atributo,valor)])
 		return x
 			
 								
@@ -197,7 +174,6 @@ class Evento(Estacionamiento):
 			self.ticket_estacionamiento += 1
 			self.mensaje = "Se ha creado el Estacionamiento"
 			self.traza = linea[1]	
-			print(len(self.le))
 
 		elif linea[0] == "P":
 			self.encabezado = ' '.join(linea) 
@@ -209,12 +185,12 @@ class Evento(Estacionamiento):
 					su ticket: " + str(pseudo_mensaje)
 		elif linea[0] == "R":
 			self.encabezado = ' '.join(linea) 
-			x = self.le[len(self.le) - 1].Retirar(linea[1], linea[2])  
-			self.mensaje = x 
+			x = self.le[len(self.le) - 1].Retirar(linea[1], int(linea[2]))  
+			self.mensaje = str(x) 
 
 		elif linea[0] == "E":
 			self.encabezado = ' '.join(linea) 
-			x = self.le[len(self.le) - 1].Existe(linea[1], linea[2])
+			x = self.le[len(self.le) - 1].Existe(linea[1], int(linea[2]))
 			self.mensaje = str(x)
 		elif linea[0] == "K":
 			self.encabezado = ' '.join(linea) 
@@ -227,8 +203,7 @@ class Evento(Estacionamiento):
 			x = self.le[len(self.le) - 1].Buscar(linea[1], linea[2])
 			for i in x:
 				for j in i[1]:
-					print(j)
-					self.mensaje += str(i[0]) + ": "+ j + \
+					self.mensaje += str(i[0]) + ": "+ str(j) + \
 							"\n"
 
 		archivo = open(self.traza, "a")
