@@ -2,8 +2,11 @@
 # Modulo Estacionamiento
 from random import *
 from tubo import *
+from vehiculo import *
+seed(0.101101)
 class Estacionamiento(object):
 
+<<<<<<< HEAD
 	ticket_tubo = 0
 <<<<<<< HEAD
 	ticket_vehiculo = 0
@@ -11,12 +14,14 @@ class Estacionamiento(object):
 =======
 
 >>>>>>> d7e2389999584ae05a47c31bdaea024ac79201d4
+=======
+>>>>>>> 9fdbf065dab5572c19282b019ab5f05e92a4d00f
 
 	def __init__(self,e):
 		self.etiqueta = e
 		self.ct = []
 		self.tamanyo_estacionamiento = 0
-
+		self.ticket_tubo = 0
 	def Generar(self):	 
 		nuevo_tubo = Tubo(randint(5,25), self.ticket_tubo)
 		self.ticket_tubo += 1
@@ -24,39 +29,44 @@ class Estacionamiento(object):
 		self.ct.append(nuevo_tubo)
 
 
-	def Estacionar(self,vehiculo):
+	def Estacionar(self, vehiculo, *arg):
 		if self.tamanyo_estacionamiento == 0:
 			self.Generar()
 			while self.ct[0].capacidad < vehiculo.longitud:
 				self.Generar()
 
-			i = 0
-			self.ct.append(self.ct[0])
-			while i < self.tamanyo_estacionamiento:
-				self.ct[i] = self.ct[i + 1]
-				i += 1
+				i = len(self.ct) - 1
+				aux = self.ct[i] 
+				while i != 0:
+					self.ct[i] = self.ct[i - 1]
+					i -= 1
 
+				self.ct[0] = aux
 			self.ct[0].Estacionar_tubo(vehiculo)
 			tubo_estacionar = self.ct[0].etiqueta
 
 
 		else:
-			if self.ct[0].ocupacion > vehiculo.longitud:
+			if (self.ct[0].capacidad - self.ct[0].ocupacion) >= vehiculo.longitud:
 				self.ct[0].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[0].etiqueta
 			else:
 				
-				while self.ct[0].capacidad < vehiculo.longitud:
+				while (self.ct[0].capacidad - self.ct[0].ocupacion) < vehiculo.longitud:
 					self.Generar()
 
-				i = 0
-				self.ct[self.tamanyo_estacionamiento] = self.ct[0]
-				while i < self.tamanyo_estacionamiento:
-					self.ct[i] = self.ct[i + 1]
-					i += 1
+					i = len(self.ct) - 1
+					aux = self.ct[i] 
+					while i != 0:
+						self.ct[i] = self.ct[i - 1]
+						i -= 1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+					self.ct[0] = aux
+>>>>>>> 9fdbf065dab5572c19282b019ab5f05e92a4d00f
 				self.ct[0].Estacionar_tubo(vehiculo)
 				tubo_estacionar = self.ct[0].etiqueta
 >>>>>>> d7e2389999584ae05a47c31bdaea024ac79201d4
@@ -64,59 +74,34 @@ class Estacionamiento(object):
 		return tubo_estacionar
 
 
+	def Existe(self,placa,ticket):
+		existe = False
+		for i in self.ct:
+			if ticket == i.etiqueta:
+				existe = i.Existe("placa",placa)
 
-	def Existe(self,placa,ticket,*arg):
-
-		i = 0
-		existe=False
-		while  i < self.tamanyo_estacionamiento and not(existe):
-		     j = 0
-		     while j < len(self.ct[i].pv) and not(existe):
-
-		     		if self.ct[i].pv[j].Existe("placa",placa) and self.ct[i].etiqueta == ticket:
-		     			existe=True
-		     		else:
-		     			j += 1
-		     i += 1
-		
-		if len(arg)==2 and existe: 
-		 	arg[0]=i-1
-		 	arg[1]=j
-		 
-		 
 		return existe
 
-	
-	def Retirar(self,placa,ticket):
 
-		j=0
-		
-		if self.Existe(placa,ticket):
-			for i in range(0,len(self.ct)):
-				tubo_explota = False
-				while not len(self.ct[i].pv) == 0 and self.ct[i].etiqueta == tickect:
-					tubo_explota = True
-					vehiculo = self.ct[i].Retirar() 
-					if placa == vehiculo.placa and j == 0:
-						tubo = self.ct[i].pv
-						return "El vehiculo se ha retirado correctamente"
-						break
-					else:
-						if placa == vehiculo.placa:
-							return "El vehiculo se ha retirado correctamente"
-						else:
-							tubo = Tubo(self.ct[i].capacidad, self.ct[i].etiqueta)
-							tubo.Estacionar(vehiculo)
-					j += 1
-			
-				if tubo_explota:
-					self.ct.pop(i)
-					self.ct.append(tubo)						
-					break	
-		
-		else: 
-			return "No existe un vehiculo con esos atributos"
-			
+	def Retirar(self,placa,ticket):
+		if True == self.Existe(placa,ticket):
+			while self.ct[0].etiqueta != ticket:
+				self.ct.append(self.ct[0])
+				self.ct.pop(0)
+
+			aux = Tubo(self.ct[0].capacidad,self.ct[0].etiqueta)
+			for i in range(len(self.ct[0].pv)):
+				if placa == self.ct[0].pv[0].placa:
+					x = self.ct[0].Retirar()
+				else:
+					aux.Estacionar_tubo(self.ct[0].Retirar())
+					
+			self.ct.pop(0)
+			self.ct.append(aux)
+		else:
+			x = "El vehiculo no existe"
+
+		return x
 
 
 	def Destruir(self):
@@ -131,11 +116,11 @@ class Estacionamiento(object):
 			print("TUBO",self.ct[i].etiqueta,self.ct[i].capacidad,self.ct[i].ocupacion)
 			print("--------------------------")
 			for j in range(len(self.ct[i].pv)):
-				print(self.ct[i].pv[j].etiqueta)
+				print(self.ct[i].pv[j].placa)
 			print("\n")
 		
 
-	def Vaciar(self,etiqueta):
+	def Vaciar(self,etiqueta): #El profesor Victor Theoktisto comento que este procedimiento no es necesario
 		i=0
 		existe=False
 		while (i < len(self.ct)) and not(existe):
@@ -166,12 +151,84 @@ class Estacionamiento(object):
 
 	def Buscar(self, atributo, valor):
 		x = []
+		if (atributo == ( "Anyo" or "Longitud" or "Etiqueta" or "anyo" \
+			or "longitud" or "etiqueta")):
+			valor = int(valor)
+
 		for i in self.ct:
-			x.append([i.etiqueta, i.Existe(atributo,valor)])
-		 
+			x.append([i.etiqueta, i.Busqueda(atributo,valor)])
 		return x
 			
 								
 			
+ 
+	def ProcesarLlegadas(self, nombreArchivo):
+	    
 
+		archivo = open(nombreArchivo,"r")
+		for i in archivo:
+			linea = i.split()
+			if len(linea) == 0:
+			    pass
+			else:
+				self.Procesar(linea)
 
+#<<<<======================================================================>>>#
+    
+class Evento(Estacionamiento):
+	ticket_estacionamiento = 0
+	ticket_vehiculo = 0
+	le = []	
+	traza = " "
+
+	def __init__(self):
+		self.mensaje = " " 
+		self.encabezado = " "
+		
+	def Procesar(self, linea):
+		if linea[0] == "C":
+			self.encabezado = ' '.join(linea) 
+			estacionamiento = \
+			Estacionamiento(self.ticket_estacionamiento)
+			self.le.append(estacionamiento)
+			self.ticket_estacionamiento += 1
+			self.mensaje = "Se ha creado el Estacionamiento"
+			self.traza = linea[1]	
+
+		elif linea[0] == "P":
+			self.encabezado = ' '.join(linea) 
+			x = Vehiculo(linea[1], float(linea[2]), linea[3], \
+				int(linea[4]), linea[5], self.ticket_vehiculo)
+			self.ticket_vehiculo += 1
+			pseudo_mensaje = self.le[len(self.le) - 1].Estacionar(x)
+			self.mensaje = "Se ha Estacionado el Vehiculo, \
+					su ticket: " + str(pseudo_mensaje)
+		elif linea[0] == "R":
+			self.encabezado = ' '.join(linea) 
+			x = self.le[len(self.le) - 1].Retirar(linea[1], int(linea[2]))  
+			self.mensaje = str(x) 
+
+		elif linea[0] == "E":
+			self.encabezado = ' '.join(linea) 
+			x = self.le[len(self.le) - 1].Existe(linea[1], int(linea[2]))
+			self.mensaje = str(x)
+		elif linea[0] == "K":
+			self.le.pop()
+			self.encabezado = ' '.join(linea) 
+			self.mensaje = " Fin \n"
+
+		elif linea[0] == "B":
+			self.encabezado = ' '.join(linea)
+			self.mensaje = ("Vehiculos de " + str(linea[1]) + " " \
+					+ str(linea[2]) + "\n")
+			x = self.le[len(self.le) - 1].Buscar(linea[1], linea[2])
+			for i in x:
+				for j in i[1]:
+					self.mensaje += str(i[0]) + ": "+ str(j) + \
+							"\n"
+
+		archivo = open(self.traza, "a")
+		archivo.write(self.encabezado + "\n")
+		archivo.write("--> " + self.mensaje + "\n")
+		archivo.close()
+    

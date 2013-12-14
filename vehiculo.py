@@ -13,3 +13,11 @@ class Vehiculo(object):
 		self.color = c
 		self.etiqueta = e
 
+	def __str__(self):
+	
+		outSTR = "<< " + str(self.placa) + ", " + str(self.longitud) + \
+			 ", " + str(self.modelo) + ", " + str(self.anyo) + ", "\
+			 + str(self.color) + ", " + str(self.etiqueta) + " >>"
+
+		return outSTR
+
