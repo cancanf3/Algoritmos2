@@ -34,31 +34,29 @@ def insertion(seq, cmpf):
 
 # Ordenamiento por Quicksort
 def quicksort(seq, cmpf):
-    def ordenar(seq, izq, der, cmpf):
-	if cmpf(der, izq) < 2:
-	    pass
-	elif cmpf(der, izq) > 2:
-	    pivote = der - 1
-	    seq = particionar(seq, izq, der, pivote, cmpf)
-	    seq = ordenar(seq, izq, pivote, cmpf)
-	    seq = ordenar(seq, pivote + 1, der, cmpf)
-	    
+	seq = _ordenar(seq, 0, len(seq), cmpf)
 	return seq
-    
-    def particionar(seq, izq, der, cmpf):
+
+def _ordenar(seq, izq, der, cmpf):
+	if (cmpf(der, izq) > 2):
+		pivote = der - 1
+		seq = _particionar(seq, izq, der, pivote, cmpf)
+		seq = _ordenar(seq, izq, pivote, cmpf)
+		seq = _ordenar(seq, pivote+1, der, cmpf)
+	
+	return seq
+
+def _particionar(seq, izq, der, pivote, cmpf):
 	i = izq
 	j = izq
 	while j != der:
-	    if cmpf(seq[j],seq[pivote]) < 0:
-		seq[i], seq[j] = seq[j], seq[i]
-		i += 1
-	    elif cmpf(seq[j], seq[pivote]) > 0:
-		pass
-	    j += 1
-
-    seq = ordenar(seq, 0, len(seq), cmpf)
-    return seq
-
+		if cmpf(seq[j],seq[pivote])<0:
+			seq[i], seq[j] = seq[j], seq[i]
+			i += 1
+		elif cmpf(seq[j], seq[pivote])>0:
+			pass
+		j += 1
+	return seq
 # Ordenamiento por Mergeort
 def mergesort(seq, cmpf):
     # completar
@@ -78,12 +76,3 @@ def bubblesort0(seq, cmpf):
 def bubblesort1(seq, cmpf):
     # completar
     return
-
-
-
-def ordenar(ordenamiento, lista, izq, der):
-    if der - izq < 2:
-	pass
-    elif der - izq > 2:
-	med = (izq + der) div 2
-	
