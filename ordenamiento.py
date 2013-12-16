@@ -34,28 +34,24 @@ def insertion(seq, cmpf):
 
 # Ordenamiento por Quicksort
 def quicksort(seq, cmpf):
-	seq = _ordenar(seq, 0, len(seq), cmpf)
-	return seq
-
-def _ordenar(seq, izq, der, cmpf):
-	if (cmpf(der, izq) > 2):
-		pivote = der - 1
-		seq = _particionar(seq, izq, der, pivote, cmpf)
-		seq = _ordenar(seq, izq, pivote, cmpf)
-		seq = _ordenar(seq, pivote+1, der, cmpf)
+	if cmpf(len(seq), 0) < 2:
+		pass
+	elif cmpf(len(seq), 0) >= 2:
+		i, j = 1, 1
+		while j != len(seq):
+			if seq[j] <= seq[0]:
+				seq[i],seq[j] = seq[j], seq[i]
+				i += 1
+			else:
+				pass
+			j += 1
+		seq[0],seq[i-1] = seq[i-1], seq[0]
+		seq1 = seq[:i-1]
+		seq2 = seq[i:]
+		seq1 = quicksort(seq1,cmpf)
+		seq2 = quicksort(seq2,cmpf)
+		seq = seq1 + [seq[i-1]] + seq2
 	
-	return seq
-
-def _particionar(seq, izq, der, pivote, cmpf):
-	i = izq
-	j = izq
-	while j != der:
-		if cmpf(seq[j],seq[pivote])<0:
-			seq[i], seq[j] = seq[j], seq[i]
-			i += 1
-		elif cmpf(seq[j], seq[pivote])>0:
-			pass
-		j += 1
 	return seq
 # Ordenamiento por Mergeort
 def mergesort(seq, cmpf):
