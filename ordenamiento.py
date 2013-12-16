@@ -44,8 +44,25 @@ def insertion(seq, cmpf):
 
 # Ordenamiento por Quicksort
 def quicksort(seq, cmpf):
-   # complet
-    return
+	if cmpf(len(seq), 0) < 2:
+		pass
+	elif cmpf(len(seq), 0) >= 2:
+		i, j = 1, 1
+		while j != len(seq):
+			if seq[j] <= seq[0]:
+				seq[i],seq[j] = seq[j], seq[i]
+				i += 1
+			else:
+				pass
+			j += 1
+		seq[0],seq[i-1] = seq[i-1], seq[0]
+		seq1 = seq[:i-1]
+		seq2 = seq[i:]
+		seq1 = quicksort(seq1,cmpf)
+		seq2 = quicksort(seq2,cmpf)
+		seq = seq1 + [seq[i-1]] + seq2
+	
+	return seq
 
 # Ordenamiento por Mergeort
 def mergesort(seq):
@@ -83,9 +100,7 @@ def mergesort(seq):
 		 	k+=1
 
 
-   # completar
-    return
-
+	return seq
 # Ordenamiento por Heapsort
 def heapsort(seq, cmpf):
     # completar
