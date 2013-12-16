@@ -69,9 +69,9 @@ def mergesort(seq):
 	if len(seq)==1:
 		pass
 	elif len(seq)==2 and seq[0]>seq[1]:
-			aux=seq[0]
-			seq[0]=seq[1]
-			seq[1]=aux
+		aux=seq[0]
+		seq[0]=seq[1]
+		seq[1]=aux
 			
 	else:
 		seq1=seq[:len(seq)/2]
@@ -84,27 +84,58 @@ def mergesort(seq):
 		while j<len(seq1) and k<len(seq2):
 			if seq1[j]<=seq2[k]:
 				seq[k+j]=(seq1[j])
-
 				j+=1
 			elif seq1[j]>seq2[k]:
 				seq[k+j]=(seq2[k])
-
 				k+=1
 				
 		while j<len(seq1):
 			seq[k+j]=(seq1[j])
-
-		 	j+=1 
+			j+=1 
 		while k<len(seq2):
 			seq[k+j]=(seq2[k])
-		 	k+=1
+			k+=1
 
 
 	return seq
 # Ordenamiento por Heapsort
 def heapsort(seq, cmpf):
-    # completar
-    return
+	def _construirHeap(n, seq, cmpf):
+		k = n // 2
+		while k != 0:
+			k -= 1
+			seq = _acomodarHeap(n,seq,k,n, cmpf)
+		
+		return seq
+
+
+	def _acomodarHeap(n, seq, l, m, cmpf):
+		k, listo = l, False
+		while not listo:
+			mayor = k
+			if cmpf(2*k+1, m) < 0 and cmpf(seq[2*k+1], seq[mayor]) > 0:
+				mayor = 2*k + 1
+			if cmpf(2*k+2, m) < 0 and cmpf(seq[2*k+2], seq[mayor]) > 0:
+				mayor = 2*k + 2
+			if mayor == k:
+				listo = True
+			else:
+				seq[mayor], seq[k] = seq[k], seq[mayor]
+				k = mayor
+
+		return seq
+
+
+	seq = _construirHeap(len(seq),seq,cmpf)
+	k = len(seq)
+
+	while k >= 0:
+		k -= 1
+		seq[0], seq[k] = seq[k], seq[0]
+		seq = _acomodarHeap(len(seq),seq,0,k,cmpf)
+
+	seq[0], seq[k] = seq[k], seq[0]
+	return seq
 
 # Ordenamiento por Bubblesort0
 def bubblesort0(seq, cmpf):
