@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #! /usr/bin/env python
 
 def cmpf(x,y):
@@ -9,7 +8,6 @@ def cmpf(x,y):
 	else: 
 		return 0
 		
-=======
 # Descripción: Módulo con la implementación de algoritmos de ordenamientos
 #              que son aplicados sobre listas de elementos que son comparables
 #              entre sí. Al aplicar algún algoritmo de ordenamiento, la lista a ordenar
@@ -34,7 +32,6 @@ def cmpf(x,y):
 #                 cmpf(x, y) = 0 : significa que los elementos x, y son equivalentes
 
 # Ordenamiento por Inserción
->>>>>>> 9fdbf065dab5572c19282b019ab5f05e92a4d00f
 def insertion(seq, cmpf):
     n = len(seq)
     for i in range(1, n) :
@@ -47,7 +44,6 @@ def insertion(seq, cmpf):
 
 # Ordenamiento por Quicksort
 def quicksort(seq, cmpf):
-<<<<<<< HEAD
    # complet
     return
 
@@ -87,15 +83,8 @@ def mergesort(seq):
 		 	k+=1
 
 
-=======
    # completar
     return
-
-# Ordenamiento por Mergeort
-def mergesort(seq, cmpf):
-    # completar
-    return
->>>>>>> 9fdbf065dab5572c19282b019ab5f05e92a4d00f
 
 # Ordenamiento por Heapsort
 def heapsort(seq, cmpf):
