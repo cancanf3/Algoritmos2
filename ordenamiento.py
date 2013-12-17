@@ -1,13 +1,5 @@
 #! /usr/bin/env python
 
-def cmpf(x,y):
-	if x < y:
-		return -1
-	elif x > y:
-		return 1
-	else: 
-		return 0
-		
 # Descripción: Módulo con la implementación de algoritmos de ordenamientos
 #              que son aplicados sobre listas de elementos que son comparables
 #              entre sí. Al aplicar algún algoritmo de ordenamiento, la lista a ordenar
@@ -15,7 +7,6 @@ def cmpf(x,y):
 # Autor: Guillermo Palma
 # email: gvpalma@usb.ve
 # version 0.1
-
 
 # Todos los algoritmos de ordenamiento tienen los siguentes parámetros
 # Parámetros: seq: objeto lista de python que contiene elementos comparables
@@ -61,31 +52,31 @@ def quicksort(seq, cmpf):
 		seq1 = quicksort(seq1,cmpf)
 		seq2 = quicksort(seq2,cmpf)
 		seq = seq1 + [seq[i-1]] + seq2
-	
 	return seq
+	
 
 # Ordenamiento por Mergeort
-def mergesort(seq):
+def mergesort(seq, cmpf):
 	if len(seq)==1:
 		pass
-	elif len(seq)==2 and seq[0]>seq[1]:
+	elif len(seq)==2 and cmpf(seq[0],seq[1])>0:
 		aux=seq[0]
 		seq[0]=seq[1]
 		seq[1]=aux
 			
 	else:
-		seq1=seq[:len(seq)/2]
-		seq2=seq[len(seq)/2:]
-		mergesort(seq1)
-		mergesort(seq2)
+		seq1=seq[:len(seq)//2]
+		seq2=seq[len(seq)//2:]
+		mergesort(seq1,cmpf)
+		mergesort(seq2,cmpf)
 		j=0
 		k=0
 		
 		while j<len(seq1) and k<len(seq2):
-			if seq1[j]<=seq2[k]:
+			if cmpf(seq1[j],seq2[k])<=0:
 				seq[k+j]=(seq1[j])
 				j+=1
-			elif seq1[j]>seq2[k]:
+			elif cmpf(seq1[j],seq2[k])>0:
 				seq[k+j]=(seq2[k])
 				k+=1
 				
@@ -97,7 +88,6 @@ def mergesort(seq):
 			k+=1
 
 
-	return seq
 # Ordenamiento por Heapsort
 def heapsort(seq, cmpf):
 	def _construirHeap(n, seq, cmpf):
@@ -139,10 +129,30 @@ def heapsort(seq, cmpf):
 
 # Ordenamiento por Bubblesort0
 def bubblesort0(seq, cmpf):
-    # completar
-    return
+	n = 0
+	while n != len(seq):
+		k = len(seq) - 1
+		while k != n:
+			if cmpf(seq[k-1],seq[k]) < 0:
+				pass
+			else:
+				seq[k-1], seq[k] = seq[k], seq[k-1]
+			k -= 1
+		n += 1
+
 
 # Ordenamiento por Bubblesort1
 def bubblesort1(seq, cmpf):
-    # completar
-    return
+	n, b = 0, False
+	while n != len(seq) and not b:
+		k = len(seq) - 1
+		b = True
+		while k != n:
+			if cmpf(seq[k-1],seq[k]) < 0:
+				pass
+			else:
+				seq[k-1], seq[k] = seq[k], seq[k-1]
+				b = False
+			k -= 1
+		n += 1
+

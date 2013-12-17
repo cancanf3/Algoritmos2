@@ -50,8 +50,14 @@ def obtenerArregloEnteros(n):
 # Retorna: True si el arreglo está ordenado, False en caso contrario.
 
 def estaOrdenado(a):
-    # completar
-    return True
+	ordenado = True
+	i = 0
+	while ordenado and i != len(a)-1:
+		if a[i] > a[i+1]:
+			ordenado = False
+		i += 1
+
+	return ordenado
 
 # Descripción: Prueba los algoritmos de ordenamientos con una lista de elementos.
 # Se crea un objeto Ordenamiento y se luego se ejecutan que se hayan indicado
@@ -78,21 +84,21 @@ def probarAlgoritmos(datos, fcmp, tipo):
         arrayResult = list(datos)
         insertion(arrayResult, fcmp)
         assert(estaOrdenado(arrayResult))
-        timeIsertion = time.time() - start_time
+        timeIsertion = round((time.time() - start_time) * 1000,2)
 
         print("Comenzando Bubblesort0")
         start_time = time.time()
         arrayResult = list(datos)
         bubblesort0(arrayResult, fcmp)
         assert(estaOrdenado(arrayResult))
-        timeBubblesort0 = time.time() - start_time
+        timeBubblesort0 = round((time.time() - start_time) * 1000,2)
 
         print("Comenzando Bubblesort1")
         start_time = time.time()
         arrayResult = list(datos)
         bubblesort1(arrayResult, fcmp)
         assert(estaOrdenado(arrayResult))
-        timeBubblesort1 = time.time() - start_time
+        timeBubblesort1 = round((time.time() - start_time) * 1000,2)
 
         time_N_2 = (("Isertionsort", timeIsertion), ("Bubblesort0", timeBubblesort0), ("Bubblesort1", timeBubblesort1))
     else :
@@ -101,26 +107,25 @@ def probarAlgoritmos(datos, fcmp, tipo):
     print("Comenzando Quicksort")
     start_time = time.time()
     arrayResult = list(datos)
-    quicksort(arrayResult, fcmp)
+    arrayResult = quicksort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
-    timeQuicksort = time.time() - start_time
+    timeQuicksort = round((time.time() - start_time) * 1000,2)
 
     start_time = time.time()
     arrayResult = list(datos)
     mergesort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
-    timeMergesort = time.time() - start_time
+    timeMergesort = round((time.time() - start_time) * 1000,2)
 
     start_time = time.time()
     arrayResult = list(datos)
-    heapsort(arrayResult, fcmp)
+    arrayResult = heapsort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
-    timeHeapsort = time.time() - start_time
+    timeHeapsort = round((time.time() - start_time) * 1000,2) 
 
     time_N_lg_N = (("Quicksort", timeQuicksort), ("Mergesort", timeMergesort), ("Heapsort", timeHeapsort))
 
-    print(time_N_lg_N + time_N_2) # Solo como muestra, eliminar para la entrega
-
+   
     return time_N_lg_N + time_N_2
 
 # Descripción: Compara dos números enteros.
@@ -175,8 +180,25 @@ def realizarPruebas(numPruebas, numElems, tipo):
 #           uno de los algoritmos probados, junto con la desviación estándar.
 
 def procesarResultados(results):
-    print("")
-    print(results) # Solo como muestra, eliminar para la entrega
+	print(results)
+	print('a')
+	promedios=[]
+	for j in range(len(results[0])):
+		p=0
+		for i in range(len(results)):
+			p += results[i][j][1]
+		promedios.append((results[0][j][0], round(p/len(results),2)))
+	print(promedios)
+	
+	desviacion=[]	
+	for j in range(len(results[0])):
+		p=0
+		for i in range(len(results)):
+			p += (results[i][j][1]-promedios[j][1])**2
+		desviacion.append((results[0][j][0], round((p/len(results))**(1/2),2)))
+	print('aqui')
+	print(desviacion)
+
     #completar
 
 ################################
