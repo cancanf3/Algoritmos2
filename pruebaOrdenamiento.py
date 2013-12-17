@@ -110,13 +110,13 @@ def probarAlgoritmos(datos, fcmp, tipo):
     arrayResult = quicksort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
     timeQuicksort = round((time.time() - start_time) * 1000,2)
-
+    print("Comenzando Mergesort")
     start_time = time.time()
     arrayResult = list(datos)
     mergesort(arrayResult, fcmp)
     assert(estaOrdenado(arrayResult))
     timeMergesort = round((time.time() - start_time) * 1000,2)
-
+    print("Comenzando Heapsort")
     start_time = time.time()
     arrayResult = list(datos)
     arrayResult = heapsort(arrayResult, fcmp)
