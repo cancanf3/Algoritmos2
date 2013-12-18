@@ -461,3 +461,73 @@ a
 [('Quicksort', 109113.26), ('Mergesort', 109929.73), ('Heapsort', 238609.06)]
 aqui
 [('Quicksort', 3116.53), ('Mergesort', 344.62), ('Heapsort', 558.86)]
+
+
+============================= nlgn | Prueba 5 veces | 7000000 elementos =====================================
+
+
+
+Comenzando la prueba: 1
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 2
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 3
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 4
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 5
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+[(('Quicksort', 129103.55), ('Mergesort', 129947.84), ('Heapsort', 279431.05)), (('Quicksort', 132322.22), ('Mergesort', 128212.7), ('Heapsort', 277847.94)), (('Quicksort', 122112.41), ('Mergesort', 128706.99), ('Heapsort', 278101.27)), (('Quicksort', 124448.26), ('Mergesort', 128125.69), ('Heapsort', 278526.16)), (('Quicksort', 125181.66), ('Mergesort', 128393.05), ('Heapsort', 285803.28))]
+a
+[('Quicksort', 126633.62), ('Mergesort', 128677.25), ('Heapsort', 279941.94)]
+aqui
+[('Quicksort', 3627.29), ('Mergesort', 665.74), ('Heapsort', 2979.72)]
+
+
+============================= nlgn | Prueba 5 veces | 8000000 elementos =====================================
+
+
+
+Comenzando la prueba: 1
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 2
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 3
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 4
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 5
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+[(('Quicksort', 160361.27), ('Mergesort', 155212.75), ('Heapsort', 329098.04)), (('Quicksort', 146978.26), ('Mergesort', 147668.05), ('Heapsort', 318806.07)), (('Quicksort', 147192.29), ('Mergesort', 147582.47), ('Heapsort', 323104.78)), (('Quicksort', 151221.58), ('Mergesort', 147227.6), ('Heapsort', 321979.12)), (('Quicksort', 161043.65), ('Mergesort', 147479.76), ('Heapsort', 318684.86))]
+a
+[('Quicksort', 153359.41), ('Mergesort', 149034.13), ('Heapsort', 322334.57)]
+aqui
+[('Quicksort', 6187.02), ('Mergesort', 3092.85), ('Heapsort', 3800.92)]
