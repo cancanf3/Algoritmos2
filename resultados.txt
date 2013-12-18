@@ -566,3 +566,37 @@ a
 [('Quicksort', 177134.53), ('Mergesort', 170985.49), ('Heapsort', 366669.34)]
 aqui
 [('Quicksort', 4387.89), ('Mergesort', 1911.54), ('Heapsort', 4056.37)]
+
+============================= nlgn | Prueba 5 veces | 10000000 elementos =====================================
+
+
+
+Comenzando la prueba: 1
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 2
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 3
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 4
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+
+Comenzando la prueba: 5
+Comenzando Quicksort
+Comenzando Mergesort
+Comenzando Heapsort
+[(('Quicksort', 197743.0), ('Mergesort', 191672.94), ('Heapsort', 415030.06)), (('Quicksort', 207662.91), ('Mergesort', 191572.35), ('Heapsort', 414163.67)), (('Quicksort', 193680.39), ('Mergesort', 189587.97), ('Heapsort', 414558.83)), (('Quicksort', 199503.39), ('Mergesort', 188833.37), ('Heapsort', 412947.73)), (('Quicksort', 192029.49), ('Mergesort', 189103.23), ('Heapsort', 412392.75))]
+a
+[('Quicksort', 198123.84), ('Mergesort', 190153.97), ('Heapsort', 413818.61)]
+aqui
+[('Quicksort', 5475.9), ('Mergesort', 1223.72), ('Heapsort', 992.58)]
