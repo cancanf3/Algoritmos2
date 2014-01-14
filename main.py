@@ -1,15 +1,24 @@
 #! /usr/bin/env python
-from ordenamiento import *
-from random import *
-def comparadorNumerico1(x, y):	# es la funcioncion cmpf
-        return x - y
+from arbolbin import *
+
+arbol=arbol()
 
 
-N = 1000			# Tamano de la lista
 
-seq = [ x for x in range(N)]	# genero una lista de [0..N)
-shuffle(seq)			# Barajeo el arreglo
-print("==================================================================================================================")
-mergesort(seq, comparadorNumerico1)
-print(seq)
+arbol.add('A')
+arbol.add('AA')
+arbol.add('AAA')
+arbol.add('T')
+arbol.add('AAAA')
+arbol.add('AAAAAAAT')
+
+x=arbol.getall()
+mostrar(x)
+
+
+
+
+arbol.change('AAA','TTT')
+
+mostrar(arbol.getall())
 
