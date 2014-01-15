@@ -55,7 +55,8 @@ class arbol(object):
 			aux = self.raiz
 			listado+=self.getall(aux.hijo_izq,'A')
 			listado+=self.getall(aux.hijo_der,'T')
-			return listado
+			for i in range(len(listado)/2):
+				self.Print(str(listado[2*i])+', '+ str(listado[2*i+1]))
 		else:
 		
 			if args[0] == None:
@@ -333,6 +334,14 @@ class arbol(object):
 						aux1=aux1.hijo_der
 			
 				self.__Mapeo(aux1, aux0)
+
+
+
+
+	def Print (self, string):
+		archivo = open("salida.txt","a")
+		archivo.write(string+"\n")
+		archivo.close()
 				
 		
 

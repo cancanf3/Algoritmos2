@@ -25,12 +25,9 @@ arbol.add('TTAT')
 arbol.add('TTTT')
 arbol.add('TTTA')
 arbol.add('TTA')
-x=arbol.getall()
-mostrar(x)
-arbol.changemerge('AA','TT')
+arbol.changemerge('AA','TTTT')
 
-x=arbol.getall()
-mostrar(x)
+arbol.getall()
 
 
 
