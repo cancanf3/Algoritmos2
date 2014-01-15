@@ -157,8 +157,8 @@ class arbol(object):
 			
 
 
-	# Cambia las secuencias que empiezen por secuenciaOrigen, por unas que 
-	# empiezen con secuenciaDestino
+	# Cambia las secuencias que empiecen por secuenciaOrigen, por unas que 
+	# empiecen con secuenciaDestino
 	def change (self, secuenciaOrigen, secuenciaDestino):
 
 		# Precondicion:
@@ -225,9 +225,116 @@ class arbol(object):
 				aux2.hijo_izq = None
 			elif ultimo2 == 'T':
 				aux2.hijo_der = None
+
+	# Mapea los subarboles
+	def __Mapeo1 (self, aux, *args): 
+		sec=[]	
+
+		if aux == None:
+			return sec
+		else:
+			if aux.hijo_izq != None:
+				if len(args) != 0:
+					x= args[0] + 'A'
+					sec.append(x)
+					sec+=self.__Mapeo(aux.hijo_izq,x)
+				else:
+					x='A'
+					sec+=x
+					sec+=self.__Mapeo(aux.hijo_izq,x)
 		
+			if aux.hijo_der != None:
+				if len(args) != 0:
+					print(args[0])
+					print('llegue')
+					y=args[0] + 'T'
+					sec.append(y)
+					sec+=self.__Mapeo(aux.hijo_der,y)
+				else:
+					y='T'
+					sec+=y
+					sec+=self.__Mapeo(aux.hijo_der,y)
+			return sec
 
 
+
+	def __Mapeo (self, aux1, aux0):
+		# aux1 y aux0 apunten a el final de secuenciaOrigen y secuenciaDestino respectivamente
+		if aux1 == None:
+			pass
+
+		else:
+			aux0.cantidad += aux1.cantidad
+			aux1.cantidad = 0
+			
+			if aux1.hijo_izq != None:
+				if aux0.hijo_izq != None:
+					self.__Mapeo(aux1.hijo_izq,aux0.hijo_izq)
+				else:
+					aux0.hijo_izq = aux1.hijo_izq
+					aux1.hijo_izq = None
+
+			if aux1.hijo_der != None:
+				if aux0.hijo_der != None:
+					self.__Mapeo(aux1.hijo_der,aux0.hijo_der)
+				else:
+					aux0.hijo_der = aux1.hijo_der
+					aux1.hijo_der = None
+
+				
+
+			
+
+# Cambia las secuencias que empiecen por secuenciaOrigen, por unas que
+# Empiecen con secuenciaDestino 
+	def changemerge (self, secuenciaOrigen, secuenciaDestino):
+
+			if self.raiz == None:
+				pass
+			else:
+				pre=False
+				aux0=self.raiz
+				for i in secuenciaDestino:
+					if i == 'A':
+						if aux0.hijo_izq == None:
+							pre=True
+							break
+						else:
+							aux0=aux0.hijo_izq
+					elif i == 'T':
+						if aux0.hijo_der == None:
+							pre=True
+							break
+						else:
+							aux0=aux0.hijo_der
+
+					if pre:
+						self.add(secuenciaDestino)   # Recordar que se suma 1
+						aux0=self.raiz
+						for i in secuenciaDestino:
+							if i == 'A':
+								aux0=aux0.hijo_izq
+							elif i == 'T':
+								aux0=aux0.hijo_der
+						aux0.cantidad -= 1
+
+
+				aux0=self.raiz				# Posicionamiento de referencias
+				for i in secuenciaDestino:
+					if i == 'A':
+						aux0=aux0.hijo_izq
+					elif i == 'T':
+						aux0=aux0.hijo_der
+				aux1=self.raiz
+				for i in secuenciaOrigen:
+					if i == 'A':
+						aux1=aux1.hijo_izq
+					elif i == 'T':
+						aux1=aux1.hijo_der
+			
+				self.__Mapeo(aux1, aux0)
+				
+		
 
 
 
