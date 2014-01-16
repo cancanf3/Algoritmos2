@@ -6,7 +6,7 @@ def Argumentos (args):
 		print(msg)
 	return str(args[1]), str(args[2])
 
-def Procesar (self, fileR, fileW):
+def Procesar (fileR, fileW):
 	arbol = arbol()
 	archivo = open(fileR, "r")
 	for i in archivo:
@@ -40,7 +40,13 @@ class nodo(object):
 class arbol(object):
 	raiz=nodo()
 	raiz.cantidad = None
-	
+
+	# Procedimiento que escribe las salidas en el archivo de texto
+	def Print (self, archivo, string):
+		archivo = open(archivo,"a")
+		archivo.write(str(string)+"\n")
+		archivo.close()
+		print(str(string))
 
 	
 
@@ -256,37 +262,9 @@ class arbol(object):
 			elif ultimo2 == 'T':
 				aux2.hijo_der = None
 
-	# Mapea los subarboles
-	def __Mapeo1 (self, aux, *args): 
-		sec=[]	
+		self.delete(secuenciaOrigen)
 
-		if aux == None:
-			return sec
-		else:
-			if aux.hijo_izq != None:
-				if len(args) != 0:
-					x= args[0] + 'A'
-					sec.append(x)
-					sec+=self.__Mapeo(aux.hijo_izq,x)
-				else:
-					x='A'
-					sec+=x
-					sec+=self.__Mapeo(aux.hijo_izq,x)
-		
-			if aux.hijo_der != None:
-				if len(args) != 0:
-					print(args[0])
-					print('llegue')
-					y=args[0] + 'T'
-					sec.append(y)
-					sec+=self.__Mapeo(aux.hijo_der,y)
-				else:
-					y='T'
-					sec+=y
-					sec+=self.__Mapeo(aux.hijo_der,y)
-			return sec
-
-
+	# Mapea, sincroniza y referencia los subarboles
 
 	def __Mapeo (self, aux1, aux0):
 		# aux1 y aux0 apunten a el final de secuenciaOrigen y secuenciaDestino respectivamente
@@ -339,7 +317,7 @@ class arbol(object):
 							aux0=aux0.hijo_der
 
 					if pre:
-						self.add(secuenciaDestino)   # Recordar que se suma 1
+						self.add(secuenciaDestino)   
 						aux0=self.raiz
 						for i in secuenciaDestino:
 							if i == 'A':
@@ -362,15 +340,13 @@ class arbol(object):
 					elif i == 'T':
 						aux1=aux1.hijo_der
 			
+				aux3 = aux1
 				self.__Mapeo(aux1, aux0)
+				self.delete(secuenciaOrigen)
 
 
 
 
-	def Print (self, archivo, string):
-		archivo = open(archivo,"a")
-		archivo.write(str(string)+"\n")
-		archivo.close()
 				
 		
 ##############################################
@@ -383,5 +359,5 @@ class arbol(object):
 
 fileR, fileW = Argumentos(sys.args)
 
-
+Procesar(fileR, fileW)
 
