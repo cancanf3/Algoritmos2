@@ -1,20 +1,22 @@
 import sys, traceback
 
 def Argumentos (args):
-	msg = " Error en la linea de comandos: arbolbin.py  
+	msg = " Error en la linea de comandos: arbolbin.py  \
 		<Archivo de Entrada> <Archivo de Salida> "
-	if  len(args) != 2:
+	if  len(args) != 3:
 		print(msg)
 	return str(args[1]), str(args[2])
 
 def Procesar (fileR, fileW):
-	arbol = arbol()
+	arbol = Arbol()
 	arbol.fileW = fileW
 	archivo = open(fileR, "r")
-	for i in archivo:
+	for x in archivo:
+		i = x.split()
 		if i[0] == "ADD":
 			arbol.add(i[1])
 		elif i[0] == "GET":
+			print('hola')
 			arbol.get(i[1])
 		elif i[0] == "GETALL":
 			arbol.getall()
@@ -39,7 +41,7 @@ class nodo(object):
 
 
 
-class arbol(object):
+class Arbol(object):
 	raiz=nodo()
 	raiz.cantidad = None
 	fileW = " "
@@ -121,7 +123,7 @@ class arbol(object):
 			max1 = self.maxlength(aux.hijo_izq)
 			max2 = self.maxlength(aux.hijo_der)
 			max=max1 if max1 > max2 else max2
-			self.print(self.fileW,str(max))
+			self.Print(self.fileW,str(max))
 			
 
 		else:
@@ -353,7 +355,6 @@ class arbol(object):
 
 
 				
-		
 ##############################################
 #					     #
 #	   INICIO DE LA APLICACION           #
@@ -362,7 +363,6 @@ class arbol(object):
 ##############################################
 
 
-fileR, fileW = Argumentos(sys.args)
+fileR, fileW = Argumentos(sys.argv)
 
 Procesar(fileR, fileW)
-
