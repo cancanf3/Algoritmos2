@@ -1,21 +1,23 @@
 import sys, traceback
 
 def Argumentos (args):
-	msg = " Error en la linea de comandos: arbolbin.py  <Archivo de Entrada> <Archivo de Salida> "
+	msg = " Error en la linea de comandos: arbolbin.py  
+		<Archivo de Entrada> <Archivo de Salida> "
 	if  len(args) != 2:
 		print(msg)
 	return str(args[1]), str(args[2])
 
 def Procesar (fileR, fileW):
 	arbol = arbol()
+	arbol.fileW = fileW
 	archivo = open(fileR, "r")
 	for i in archivo:
 		if i[0] == "ADD":
 			arbol.add(i[1])
 		elif i[0] == "GET":
-			arbol.get(i[1],fileW)
+			arbol.get(i[1])
 		elif i[0] == "GETALL":
-			arbol.getall(fileW)
+			arbol.getall()
 		elif i[0] == "MAXLENGHT":
 			arbol.maxlength()
 		elif i[0] == "DELETE":
@@ -40,7 +42,7 @@ class nodo(object):
 class arbol(object):
 	raiz=nodo()
 	raiz.cantidad = None
-
+	fileW = " "
 	# Procedimiento que escribe las salidas en el archivo de texto
 	def Print (self, archivo, string):
 		archivo = open(archivo,"a")
@@ -66,7 +68,7 @@ class arbol(object):
 		aux.cantidad+=1
 		
 	# Imprime la cantidad de una secuencia, de no existir retorna 0
-	def get(self,secuencia,fileW):
+	def get(self,secuencia):
 		aux=self.raiz
 		for i in secuencia:
 			if i == 'A' and aux.hijo_izq != None:
@@ -75,10 +77,10 @@ class arbol(object):
 				aux=aux.hijo_der
 			else:
 				 return [secuencia,0]
-		self.Print(fileW,str(secuencia)+' '+str(aux.cantidad))
+		self.Print(self.fileW,str(secuencia)+' '+str(aux.cantidad))
 
 	# Obtiene todas las secuencias con su respectiva cantidad
-	def getall(self,fileW,*args):
+	def getall(self,*args):
 		listado=[]
 		
 		if self.raiz.hijo_der == None and self.raiz.hijo_izq == None:
@@ -89,7 +91,8 @@ class arbol(object):
 			listado+=self.getall(aux.hijo_izq,'A')
 			listado+=self.getall(aux.hijo_der,'T')
 			for i in range(len(listado)/2):
-				self.Print(fileW, str(listado[2*i])+', '+ str(listado[2*i+1]))
+				self.Print(self.fileW, str(listado[2*i])+', '+ 
+					   str(listado[2*i+1]))
 		else:
 		
 			if args[0] == None:
@@ -100,13 +103,15 @@ class arbol(object):
 				if args[0].cantidad > 0:
 					listado=[args[1],args[0].cantidad]
 			
-				listado += self.getall(args[0].hijo_izq,args[1]+'A')
-				listado += self.getall(args[0].hijo_der,args[1]+'T')
+				listado += self.getall(args[0].hijo_izq,args[1]
+					   +'A')
+				listado += self.getall(args[0].hijo_der,args[1]
+					   +'T')
 				return listado
 
 
 	# Obtiene la secuencia mas larga
-	def maxlength (self,fileW,*args):
+	def maxlength (self,*args):
 
 		if self.raiz.hijo_der == None and self.raiz.hijo_izq == None:
 			return 0
@@ -116,7 +121,7 @@ class arbol(object):
 			max1 = self.maxlength(aux.hijo_izq)
 			max2 = self.maxlength(aux.hijo_der)
 			max=max1 if max1 > max2 else max2
-			self.print(fileW,str(max))
+			self.print(self.fileW,str(max))
 			
 
 		else:
