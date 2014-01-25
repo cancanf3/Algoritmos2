@@ -13,25 +13,25 @@ def Procesar (fileR, fileW):
 	archivo = open(fileR, "r")
 	for x in archivo:
 		i = x.split()
-		if i[0] == "ADD":
-			arbol.add(i[1])
-		elif i[0] == "GET":
-			print('hola')
-			arbol.get(i[1])
-		elif i[0] == "GETALL":
-			arbol.getall()
-		elif i[0] == "MAXLENGHT":
-			arbol.maxlength()
-		elif i[0] == "DELETE":
-			arbol.delete(i[1])
-		elif i[0] == "SET":
-			arbol.set(i[1],i[2])
-		elif i[0] == "CHANGE":
-			arbol.change(i[1], i[2])
-		elif i[0] == "CHANGEMERGE":
-			arbol.changemerge(i[1], i[2])
-		elif i[0] == "PRINT":
-			arbol.Print(fileW,i[1])
+		if len(i) > 0:
+			if i[0] == "ADD":
+				arbol.add(i[1])
+			elif i[0] == "GET":
+				arbol.get(i[1])
+			elif i[0] == "GETALL":
+				arbol.getall()
+			elif i[0] == "MAXLENGTH":
+				arbol.maxlength()
+			elif i[0] == "DELETE":
+				arbol.delete(i[1])
+			elif i[0] == "SET":
+				arbol.set(i[1],i[2])
+			elif i[0] == "CHANGE":
+				arbol.change(i[1], i[2])
+			elif i[0] == "CHANGEMERGE":
+				arbol.changemerge(i[1], i[2])
+			elif i[0] == "PRINT":
+				arbol.Print(fileW,i[1:])
 
 
 class nodo(object):
@@ -46,11 +46,18 @@ class Arbol(object):
 	raiz.cantidad = None
 	fileW = " "
 	# Procedimiento que escribe las salidas en el archivo de texto
-	def Print (self, archivo, string):
+	def Print (self, archivo, arg):
+		string=""
+		for i in arg:
+			string+=str(i) 
+				
 		archivo = open(archivo,"a")
-		archivo.write(str(string)+"\n")
+		archivo.write(string+"\n")
 		archivo.close()
-		print(str(string))
+		##############
+		#   BORRAR   #
+		##############
+		print(string)
 
 	
 
@@ -92,7 +99,7 @@ class Arbol(object):
 			aux = self.raiz
 			listado+=self.getall(aux.hijo_izq,'A')
 			listado+=self.getall(aux.hijo_der,'T')
-			for i in range(len(listado)/2):
+			for i in range(len(listado)//2):
 				self.Print(self.fileW, str(listado[2*i])+', '+ 
 					   str(listado[2*i+1]))
 		else:
@@ -102,7 +109,7 @@ class Arbol(object):
 				
 			else:	
 			
-				if args[0].cantidad > 0:
+				if int(args[0].cantidad) > 0:
 					listado=[args[1],args[0].cantidad]
 			
 				listado += self.getall(args[0].hijo_izq,args[1]
@@ -122,8 +129,9 @@ class Arbol(object):
 			aux = self.raiz
 			max1 = self.maxlength(aux.hijo_izq)
 			max2 = self.maxlength(aux.hijo_der)
-			max=max1 if max1 > max2 else max2
-			self.Print(self.fileW,str(max))
+			max1=max1 if max1 > max2 else max2
+			
+			self.Print(self.fileW,'maxlength == '+str(max1))
 			
 
 		else:
@@ -139,7 +147,7 @@ class Arbol(object):
 	
 	def delete (self,secuencia,*args):
 		if self.raiz.hijo_der == None and self.raiz.hijo_izq == None:		
-			print 'ERROR: Cannot DELETE.';
+			self.Print(self.FileW,'ERROR: Cannot DELETE.')
 		elif len(args) == 0:
 			aux = self.raiz
 			if secuencia[0] == 'A':
@@ -149,7 +157,7 @@ class Arbol(object):
 
 		else:
 			if args[1] != len(secuencia) and args[0] == None:
-				print 'ERROR: Cannot DELETE.';
+				self.Print(self.FileW,'ERROR: Cannot DELETE.');
 				return 0
 
 			elif args[1] < len(secuencia):
@@ -176,12 +184,13 @@ class Arbol(object):
 					return 0	
 				
 			elif args[1] == len(secuencia):
-				args[0].cantidad = 0
-				if (args[0].hijo_izq != None or
-				    args[0].hijo_der != None):
-					return 2
-				else:
-					return 1
+				if args[0] !=None:
+					args[0].cantidad = 0
+					if (args[0].hijo_izq != None or
+					    args[0].hijo_der != None):
+						return 2
+					else:
+						return 1
 				
 	# Reemplaza la cantidad de una secuencia dada por otra cantidad dada
 	def set ( self, secuencia, cantidad):
@@ -242,7 +251,7 @@ class Arbol(object):
 			
 		
 		if (nodo1 != None) and not(pre):
-			print 'ERROR: Cannot CHANGE. Use CHANGEMERGE instead.';
+			self.Print(self.FileW,'ERROR: Cannot CHANGE. Use CHANGEMERGE instead.')
 		else:
 			aux2=self.raiz
 			ultimo2 = secuenciaOrigen[len(secuenciaOrigen)-1]
@@ -260,11 +269,10 @@ class Arbol(object):
 			
 			if ultimo1 == 'A':
 				 aux1.hijo_izq = nodo2
-		        elif ultimo1 == 'T':
-		       		 print nodo2.cantidad;
+			elif ultimo1 == 'T':
 		        	 aux1.hijo_der = nodo2
 		
-		       	if ultimo2 == 'A':
+			if ultimo2 == 'A':
 				aux2.hijo_izq = None
 			elif ultimo2 == 'T':
 				aux2.hijo_der = None
@@ -366,3 +374,6 @@ class Arbol(object):
 fileR, fileW = Argumentos(sys.argv)
 
 Procesar(fileR, fileW)
+
+
+
