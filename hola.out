@@ -318,3 +318,1443 @@ TAATA, 0
 TAATAT, 0
 TAATATT, 0
 TAATATTA, 3
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+A, 1
+AA, 2
+AAT, 0
+AATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+A, 1
+AA, 2
+AAT, 0
+AATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+Gets
+Getall
+A, 1
+AA, 2
+AT, 1
+Maxlength
+maxlength == 2
+Gets
+Getall
+A, 1
+AA, 2
+AT, 1
+Maxlength
+maxlength == 2
+Sets
+A, 1
+AA, 2
+AT, 1
+Change
+Gets
+Getall
+A, 1
+AA, 2
+AT, 1
+Maxlength
+maxlength == 2
+Sets
+A, 1
+AA, 2
+AT, 1
+Change
+ERROR: Cannot DELETE.
+Gets
+Getall
+A, 1
+AA, 2
+AT, 1
+Maxlength
+maxlength == 2
+Sets
+A, 1
+AA, 2
+AT, 1
+Change
+T, 0
+TT, 1
+TTA, 2
+TTT, 1
+Gets
+Getall
+A, 1
+AA, 2
+AT, 1
+Maxlength
+maxlength == 2
+Sets
+A, 1
+AA, 2
+AT, 1
+Change
+TT, 1
+TTA, 2
+TTT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AT, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AT, 1
+Change
+TT, 1
+TTA, 1
+TTAA, 1
+TTT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+TTT, 1
+TTTA, 1
+TTTAA, 1
+TTTAT, 1
+TTTT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+TTA, 1
+TTAA, 1
+TTAAA, 1
+TTAAT, 1
+TTAT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+TT, 1
+TTA, 1
+TTAA, 1
+TTAT, 1
+TTT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Sets
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Change
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+ATT, 1
+TA, 1
+TAA, 1
+TAT, 1
+TT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+ATT, 1
+T, 1
+TA, 1
+TAA, 1
+TAT, 1
+TT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+ATT, 1
+ATTA, 1
+ATTAA, 1
+ATTAT, 1
+ATTT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+ATT, 1
+ATTA, 1
+ATTAA, 1
+ATTAT, 1
+ATTT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+ATT, 1
+ATTA, 1
+ATTAA, 1
+ATTAT, 1
+ATTT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+.
+A, 0
+AT, 0
+ATT, 1
+ATTA, 1
+ATTAA, 1
+ATTAT, 1
+ATTT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+A, 1
+AA, 1
+AAA, 0
+AAAT, 0
+AAATT, 1
+AAATTA, 1
+AAATTT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+A, 1
+AA, 1
+AT, 1
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+TTTTTA, 1
+TTTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+AAAA, 1
+Maxlength
+maxlength == 4
+A, 0
+AA, 0
+AAA, 1
+AAAA, 1
+.
+A, 0
+AA, 0
+T, 0
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+TTTTTA, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+AAAA, 1
+Maxlength
+maxlength == 4
+A, 0
+AA, 0
+AAA, 1
+AAAA, 1
+.
+A, 0
+T, 0
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+TTTTTA, 1
+A, 0
+AA, 0
+AAA, 0
+AAAA, 0
+AAAAA, 1
+A, 0
+A, 0
+AA, 0
+AAA, 0
+AAAA, 0
+AAAAA, 1
+A, 0
+AA, 0
+AAA, 0
+AAAA, 0
+AAAAA, 1
+T, 1
+-------------
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+A, 1
+AT, 1
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+TTTTTA, 1
+TTTTTT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+A, 1
+AA, 1
+AT, 1
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+TTTTTA, 1
+TTTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 0
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 0
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+T, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+AAA, 0
+AAAT, 0
+AAATT, 0
+AAATTT, 1
+T, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+A, 0
+AA, 0
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 0
+AA, 0
+AAA, 1
+T, 1
+Maxlength
+maxlength == 3
+A, 0
+AA, 0
+AAA, 1
+T, 1
+.
+T, 1
+TT, 0
+TTT, 0
+TTTT, 0
+TTTTT, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+A, 1
+AA, 1
+AAA, 1
+AAAT, 1
+AAATT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+A, 1
+AA, 1
+AAA, 1
+AAAT, 1
+AT, 1
+T, 1
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+maxlength == 4
+A, 1
+AA, 1
+AAA, 1
+AAAA, 1
+AAAT, 1
+AT, 1
+T, 1
+.
+ERROR: Cannot CHANGE. Use CHANGEMERGE instead.
+A, 1
+AA, 1
+AAA, 1
+AAAT, 1
+AT, 1
+T, 1

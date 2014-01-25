@@ -35,16 +35,18 @@ def Procesar (fileR, fileW):
 
 
 class nodo(object):
-		cantidad=0
-		hijo_izq=None
-		hijo_der=None
+	def __init__(self):
+		self.cantidad=0
+		self.hijo_izq=None
+		self.hijo_der=None
 
 
 
 class Arbol(object):
-	raiz=nodo()
-	raiz.cantidad = None
-	fileW = " "
+	def __init__(self):
+		self.raiz=nodo()
+		self.raiz.cantidad = None
+		self.fileW = " "
 	# Procedimiento que escribe las salidas en el archivo de texto
 	def Print (self, archivo, arg):
 		string=""
@@ -108,9 +110,6 @@ class Arbol(object):
 				return listado
 				
 			else:	
-				##########################
-				# borrar el >= y poner > #
-				##########################
 				if int(args[0].cantidad) >= 0:
 					listado=[args[1],args[0].cantidad]
 			
@@ -149,18 +148,25 @@ class Arbol(object):
 	
 	def delete (self,secuencia,*args):
 		if self.raiz.hijo_der == None and self.raiz.hijo_izq == None:		
-			self.Print(self.FileW,'ERROR: Cannot DELETE.')
+			self.Print(self.fileW,'ERROR: Cannot DELETE.')
 		elif len(args) == 0:
 			aux = self.raiz
 			if secuencia[0] == 'A':
 				self.delete(secuencia,aux.hijo_izq,1)
+				if (aux.hijo_izq.cantidad == 0 and 
+				    aux.hijo_izq.hijo_izq == None and 
+				    aux.hijo_izq.hijo_der == None):
+					aux.hijo_izq = None
 			if secuencia[0] == 'T':
 				self.delete(secuencia,aux.hijo_der,1)
-
+				if (aux.hijo_der.cantidad == 0 and 
+				    aux.hijo_der.hijo_izq == None and 
+				    aux.hijo_der.hijo_der == None):
+					aux.hijo_der = None
 		else:
 			if args[1] != len(secuencia) and args[0] == None:
-				self.Print(self.FileW,'ERROR: Cannot DELETE.');
-				return 0
+				self.Print(self.fileW,'ERROR: Cannot DELETE.')
+				return 1
 
 			elif args[1] < len(secuencia):
 				b=0
@@ -193,6 +199,9 @@ class Arbol(object):
 						return 2
 					else:
 						return 1
+				else:
+					return 1
+	
 				
 	# Reemplaza la cantidad de una secuencia dada por otra cantidad dada
 	def set ( self, secuencia, cantidad):
@@ -214,61 +223,46 @@ class Arbol(object):
 	# Cambia las secuencias que empiecen por secuenciaOrigen, por unas que 
 	# empiecen con secuenciaDestino
 	def change (self, secuenciaOrigen, secuenciaDestino):
-
-		# Precondicion:
 		aux1=self.raiz
 		pre=False
-		nodo1=aux1
+		nodo1=None
+		aux2=self.raiz
+		for i in range(len(secuenciaOrigen)-1):
+			if secuenciaOrigen[i] == 'A':
+				aux2=aux2.hijo_izq
+			elif secuenciaOrigen[i] == 'T':
+				aux2=aux2.hijo_der
+		if secuenciaOrigen[len(secuenciaOrigen)-1] == 'A':
+			nodo1=aux2.hijo_izq
+			aux2.hijo_izq=None
+		else:
+			nodo1=aux2.hijo_der
+			aux2.hijo_der=None
+			
 		ultimo1=secuenciaDestino[len(secuenciaDestino)-1]
 		for i in range(len(secuenciaDestino)-1):
 			if secuenciaDestino[i] == 'A':
 				if aux1.hijo_izq == None:
 					pre = True
-					aux.hijo_izq=nodo()
-				
+					aux1.hijo_izq=nodo()
 				aux1=aux1.hijo_izq
 			elif secuenciaDestino[i] == 'T':
-				
 				if aux1.hijo_der == None:
 					pre = True
 					aux1.hijo_der = nodo()
 				aux1=aux1.hijo_der
-		if not(pre):
+		if (not(pre) and((ultimo1 == 'A' and aux1.hijo_izq != None) 
+			     or (ultimo1 == 'T' and aux1.hijo_der != None))):
+			self.Print(self.fileW,'ERROR: Cannot CHANGE. Use CHANGEMERGE instead.')
+		else:	
 			if ultimo1 == 'A':
-				 nodo1=aux1.hijo_izq
-			elif ultimo1 == 'T':
-				 nodo1=aux1.hijo_der
-			
-			
-		
-		if (nodo1 != None) and not(pre):
-			self.Print(self.FileW,'ERROR: Cannot CHANGE. Use CHANGEMERGE instead.')
-		else:
-			aux2=self.raiz
-			ultimo2 = secuenciaOrigen[len(secuenciaOrigen)-1]
-			for i in range(len(secuenciaOrigen)-1):
-				if secuenciaOrigen[i] == 'A':
-					aux2=aux2.hijo_izq
-				elif secuenciaOrigen[i] == 'T':
-					aux2=aux2.hijo_der
+			 	aux1.hijo_izq = nodo1
+			else:
+			 	aux1.hijo_der = nodo1
+			self.delete(secuenciaOrigen)
 
-			nodo2=aux2
-			if ultimo2 == 'A':
-				nodo2=aux2.hijo_izq
-			elif ultimo2 == 'T':
-				nodo2=aux2.hijo_der
-			
-			if ultimo1 == 'A':
-				 aux1.hijo_izq = nodo2
-			elif ultimo1 == 'T':
-		        	 aux1.hijo_der = nodo2
-		
-			if ultimo2 == 'A':
-				aux2.hijo_izq = None
-			elif ultimo2 == 'T':
-				aux2.hijo_der = None
 
-		self.delete(secuenciaOrigen)
+			
 
 	# Mapea, sincroniza y referencia los subarboles
 
@@ -299,34 +293,22 @@ class Arbol(object):
 
 			
 
-# Cambia las secuencias que empiecen por secuenciaOrigen, por unas que
-# Empiecen con secuenciaDestino 
+	# Cambia las secuencias que empiecen por secuenciaOrigen, por unas que
+	# Empiecen con secuenciaDestino 
 	def changemerge (self, secuenciaOrigen, secuenciaDestino):
 
 			if self.raiz == None:
 				pass
 			else:
-				pre=False
 				aux0=self.raiz
 				for i in secuenciaDestino:
 					if i == 'A':
 						if aux0.hijo_izq == None:
-							pre=True
 							aux0.hijo_izq=nodo()
 						aux0=aux0.hijo_izq
 					elif i == 'T':
 						if aux0.hijo_der == None:
-							pre=True
 							aux0.hijo_der=nodo()
-						aux0=aux0.hijo_der
-
-
-
-				aux0=self.raiz  # Posicionamiento de referencias
-				for i in secuenciaDestino:
-					if i == 'A':
-						aux0=aux0.hijo_izq
-					elif i == 'T':
 						aux0=aux0.hijo_der
 				aux1=self.raiz
 				for i in secuenciaOrigen:
@@ -334,8 +316,6 @@ class Arbol(object):
 						aux1=aux1.hijo_izq
 					elif i == 'T':
 						aux1=aux1.hijo_der
-			
-				aux3 = aux1
 				self.__Mapeo(aux1, aux0)
 				self.delete(secuenciaOrigen)
 
