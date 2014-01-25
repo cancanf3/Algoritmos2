@@ -1,0 +1,320 @@
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Gets
+Getall
+A, 1
+AA, 1
+AAA, 1
+AAT, 1
+AT, 1
+T, 1
+Maxlength
+maxlength == 3
+Change
+T, 1
+Gets
+ATT 1
+TT 1
+TAATATTA 1
+Getall
+A, 2
+AT, 0
+ATT, 1
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 1
+TT, 1
+Maxlength
+maxlength == 8
+Sets
+A, 2
+AT, 0
+ATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+Change
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
+TT, 1
+TTA, 2
+TTAT, 0
+TTATT, 4
+Changemerge
+A, 1
+AA, 2
+AAT, 0
+AATT, 4
+T, 0
+TA, 0
+TAA, 0
+TAAT, 0
+TAATA, 0
+TAATAT, 0
+TAATATT, 0
+TAATATTA, 3
