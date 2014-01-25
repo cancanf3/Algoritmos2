@@ -108,9 +108,7 @@ class Arbol(object):
 				return listado
 				
 			else:	
-				##########################
-				# borrar el >= y poner > #
-				##########################
+			
 				if int(args[0].cantidad) >= 0:
 					listado=[args[1],args[0].cantidad]
 			
