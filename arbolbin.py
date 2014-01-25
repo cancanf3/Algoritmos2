@@ -254,6 +254,10 @@ class Arbol(object):
 		if (not(pre) and((ultimo1 == 'A' and aux1.hijo_izq != None) 
 			     or (ultimo1 == 'T' and aux1.hijo_der != None))):
 			self.Print(self.fileW,'ERROR: Cannot CHANGE. Use CHANGEMERGE instead.')
+			if secuenciaOrigen[len(secuenciaOrigen)-1] == 'A':
+				aux2.hijo_izq=nodo1
+			else:
+				aux2.hijo_der=nodo1
 		else:	
 			if ultimo1 == 'A':
 			 	aux1.hijo_izq = nodo1
