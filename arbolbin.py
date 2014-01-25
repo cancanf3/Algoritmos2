@@ -320,26 +320,26 @@ class Arbol(object):
 				for i in secuenciaDestino:
 					if i == 'A':
 						if aux0.hijo_izq == None:
-							pre=True
+							pre = True
 							break
 						else:
 							aux0=aux0.hijo_izq
 					elif i == 'T':
 						if aux0.hijo_der == None:
-							pre=True
+							pre = True
 							break
 						else:
 							aux0=aux0.hijo_der
-
-					if pre:
-						self.add(secuenciaDestino)   
-						aux0=self.raiz
-						for i in secuenciaDestino:
-							if i == 'A':
-								aux0=aux0.hijo_izq
-							elif i == 'T':
-								aux0=aux0.hijo_der
-						aux0.cantidad -= 1
+					
+				if pre == True:
+					self.add(secuenciaDestino)   
+					aux0=self.raiz
+					for i in secuenciaDestino:
+						if i == 'A':
+							aux0=aux0.hijo_izq
+						elif i == 'T':
+							aux0=aux0.hijo_der
+					aux0.cantidad -= 1
 
 
 				aux0=self.raiz				# Posicionamiento de referencias
