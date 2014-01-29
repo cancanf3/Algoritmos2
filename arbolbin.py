@@ -1,3 +1,6 @@
+#! /bin/env python3
+# Jose Pena 11-10775
+# Carlos Spaggiari 11-10987
 import sys, traceback
 
 def Argumentos (args):
