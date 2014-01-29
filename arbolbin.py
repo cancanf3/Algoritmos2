@@ -25,7 +25,7 @@ def Procesar (fileR, fileW):
 			elif i[0] == "DELETE":
 				arbol.delete(i[1])
 			elif i[0] == "SET":
-				arbol.set(i[1],i[2])
+				arbol.set(i[1],int(i[2]))
 			elif i[0] == "CHANGE":
 				arbol.change(i[1], i[2])
 			elif i[0] == "CHANGEMERGE":
@@ -51,15 +51,14 @@ class Arbol(object):
 	def Print (self, archivo, arg):
 		string=""
 		for i in arg:
-			string+=str(i) 
-				
+			string+=str(i)
+			if arg[0][0] == '\'':
+				string += ' '
+		if arg[0][0] == '\'':
+			string = string[1:len(string)-2]
 		archivo = open(archivo,"a")
 		archivo.write(string+"\n")
 		archivo.close()
-		##############
-		#   BORRAR   #
-		##############
-		print(string)
 
 	
 
@@ -102,7 +101,7 @@ class Arbol(object):
 			listado+=self.getall(aux.hijo_izq,'A')
 			listado+=self.getall(aux.hijo_der,'T')
 			for i in range(len(listado)//2):
-				self.Print(self.fileW, str(listado[2*i])+', '+ 
+				self.Print(self.fileW, str(listado[2*i])+' '+ 
 					   str(listado[2*i+1]))
 		else:
 		
@@ -110,7 +109,7 @@ class Arbol(object):
 				return listado
 				
 			else:	
-				if int(args[0].cantidad) >= 0:
+				if int(args[0].cantidad) > 0:
 					listado=[args[1],args[0].cantidad]
 			
 				listado += self.getall(args[0].hijo_izq,args[1]
@@ -253,7 +252,8 @@ class Arbol(object):
 				aux1=aux1.hijo_der
 		if (not(pre) and((ultimo1 == 'A' and aux1.hijo_izq != None) 
 			     or (ultimo1 == 'T' and aux1.hijo_der != None))):
-			self.Print(self.fileW,'ERROR: Cannot CHANGE. Use CHANGEMERGE instead.')
+			self.Print(self.fileW,'ERROR: Cannot CHANGE. \
+			Use CHANGEMERGE instead.')
 			if secuenciaOrigen[len(secuenciaOrigen)-1] == 'A':
 				aux2.hijo_izq=nodo1
 			else:
@@ -271,7 +271,8 @@ class Arbol(object):
 	# Mapea, sincroniza y referencia los subarboles
 
 	def __Mapeo (self, aux1, aux0):
-		# aux1 y aux0 apunten a el final de secuenciaOrigen y secuenciaDestino respectivamente
+		# aux1 y aux0 apunten a el final de secuenciaOrigen 
+		# y secuenciaDestino respectivamente
 		if aux1 == None:
 			pass
 
@@ -281,14 +282,16 @@ class Arbol(object):
 			
 			if aux1.hijo_izq != None:
 				if aux0.hijo_izq != None:
-					self.__Mapeo(aux1.hijo_izq,aux0.hijo_izq)
+					self.__Mapeo(aux1.hijo_izq,
+					aux0.hijo_izq)
 				else:
 					aux0.hijo_izq = aux1.hijo_izq
 					aux1.hijo_izq = None
 
 			if aux1.hijo_der != None:
 				if aux0.hijo_der != None:
-					self.__Mapeo(aux1.hijo_der,aux0.hijo_der)
+					self.__Mapeo(aux1.hijo_der,
+					aux0.hijo_der)
 				else:
 					aux0.hijo_der = aux1.hijo_der
 					aux1.hijo_der = None
@@ -301,27 +304,38 @@ class Arbol(object):
 	# Empiecen con secuenciaDestino 
 	def changemerge (self, secuenciaOrigen, secuenciaDestino):
 
-			if self.raiz == None:
-				pass
+		if self.raiz == None:
+			pass
+		else:
+			aux1 = self.raiz
+			for i in secuenciaOrigen[:
+				 len(secuenciaOrigen)-1]:
+				if i == 'A':
+					aux1=aux1.hijo_izq
+				elif i == 'T':
+					aux1=aux1.hijo_der
+
+			if (secuenciaOrigen[len(secuenciaOrigen)-1]  
+				== 'A'):
+				nodoO = aux1.hijo_izq
+				aux1.hijo_izq = None
 			else:
-				aux0=self.raiz
-				for i in secuenciaDestino:
-					if i == 'A':
-						if aux0.hijo_izq == None:
-							aux0.hijo_izq=nodo()
-						aux0=aux0.hijo_izq
-					elif i == 'T':
-						if aux0.hijo_der == None:
-							aux0.hijo_der=nodo()
-						aux0=aux0.hijo_der
-				aux1=self.raiz
-				for i in secuenciaOrigen:
-					if i == 'A':
-						aux1=aux1.hijo_izq
-					elif i == 'T':
-						aux1=aux1.hijo_der
-				self.__Mapeo(aux1, aux0)
-				self.delete(secuenciaOrigen)
+				nodoO = aux1.hijo_der
+				aux1.hijo_der = None
+
+			aux0 = self.raiz
+			for i in secuenciaDestino:
+				if i == 'A':
+					if aux0.hijo_izq == None:
+						aux0.hijo_izq=nodo()
+					aux0=aux0.hijo_izq
+				elif i == 'T':
+					if aux0.hijo_der == None:
+						aux0.hijo_der=nodo()
+					aux0=aux0.hijo_der
+			self.__Mapeo(nodoO, aux0)
+			self.delete(secuenciaOrigen)
+
 
 
 
